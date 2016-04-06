@@ -21,10 +21,12 @@ FTPopOverMenu. A pop over menu which is maybe the easiest to use.
 ## ScreenShots
 
 <table>
-  <tr>
-    <th><img src="/ScreenShots/ScreenShot01.jpg" width="250"/></th>
-    <th><img src="/ScreenShots/ScreenShot02.jpg" width="250"/></th>
-    <th><img src="/ScreenShots/ScreenShot03.jpg" width="250"/></th>
-	<th><img src="/ScreenShots/ScreenShot04.jpg" width="250"/></th>
-  </tr>
+	<tr>
+		<th><img src="/ScreenShots/ScreenShot01.jpg" width="300"/></th>
+		<th><img src="/ScreenShots/ScreenShot02.jpg" width="300"/></th>
+	</tr>
+	<tr>
+		<th><img src="/ScreenShots/ScreenShot03.jpg" width="300"/></th>
+		<th><img src="/ScreenShots/ScreenShot04.jpg" width="300"/></th>
+	</tr>
 </table>
