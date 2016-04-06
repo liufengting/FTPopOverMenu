@@ -20,7 +20,7 @@ FTPopOverMenu. A pop over menu which is maybe the easiest to use.
 ```
 ## ScreenShots
 
-<table>
+<table border = "0">
 	<tr>
 		<th><img src="/ScreenShots/ScreenShot01.jpg" width="400"/></th>
 		<th><img src="/ScreenShots/ScreenShot02.jpg" width="400"/></th>
