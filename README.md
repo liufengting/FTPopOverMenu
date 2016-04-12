@@ -2,29 +2,67 @@
 
 FTPopOverMenu. A pop over menu which is maybe the easiest to use.
 
+## ScreenShots
+
+<img src="/ScreenShots/Demo.gif" width="400"/>
+
 ## Useage
 
-
+* setTintColor
 
 ```objective-c
+    [FTPopOverMenu setTintColor:[UIColor redColor]];
+```
 
+* From SenderView, Menu Without Images
+ 
+```objective-c
+    [FTPopOverMenu showForSender:sender
+                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
+                       doneBlock:^(NSInteger selectedIndex) {
+                           
+                       } dismissBlock:^{
+                          
+                       }];
+```
+
+* From SenderView, Menu With Images
+ 
+```objective-c
     [FTPopOverMenu showForSender:sender
                         withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
                   imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
                        doneBlock:^(NSInteger selectedIndex) {
-                           NSLog(@"done block. do something. selectedIndex : %ld", (long)selectedIndex);
                            
                        } dismissBlock:^{
-                           NSLog(@"user canceled. do nothing.");
-                           
+                          
                        }];
-
+```
+* From SenderFrame, Menu Without Images
+ 
+```objective-c
+    [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
+                              withMenu:@[@"123",@"234",@"345"]
+                             doneBlock:^(NSInteger selectedIndex) {
+                                 
+                             } dismissBlock:^{
+                                 
+                             }];
 ```
 
-## ScreenShots
+* From SenderFrame, Menu With Images
+ 
+```objective-c
+    [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
+                              withMenu:@[@"123",@"234",@"345"]
+                        imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                             doneBlock:^(NSInteger selectedIndex) {
+                                 
+                             } dismissBlock:^{
+                                 
+                             }];
+```
 
-
-<img src="/ScreenShots/Demo.gif" width="400"/>
 
 
 
