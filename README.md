@@ -6,7 +6,7 @@ FTPopOverMenu. A pop over menu which is maybe the easiest to use.
 
 
 
-``objective-c
+```objective-c
 
     [FTPopOverMenu showForSender:sender
                         withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
@@ -19,18 +19,12 @@ FTPopOverMenu. A pop over menu which is maybe the easiest to use.
                            
                        }];
 
-``
+```
 
 ## ScreenShots
 
 
-<table border = "0">
-	<tr>
-		<th><img src="/ScreenShots/ScreenShot01.jpg" width="400"/></th>
-		<th><img src="/ScreenShots/ScreenShot02.jpg" width="400"/></th>
-	</tr>
-	<tr>
-		<th><img src="/ScreenShots/ScreenShot03.jpg" width="400"/></th>
-		<th><img src="/ScreenShots/ScreenShot04.jpg" width="400"/></th>
-	</tr>
-</table>
+<!--<img src="/ScreenShots/ScreenShot01.jpg" width="400"/>-->
+![FTPopOverMenu Sample gif](/ScreenShots/Demo.gif)
+
+
