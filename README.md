@@ -24,7 +24,7 @@ FTPopOverMenu. A pop over menu which is maybe the easiest to use.
 ## ScreenShots
 
 
-<!--<img src="/ScreenShots/ScreenShot01.jpg" width="400"/>-->
-![FTPopOverMenu Sample gif](/ScreenShots/Demo.gif)
+<img src="/ScreenShots/Demo.gif" width="400"/>
+
 
 
