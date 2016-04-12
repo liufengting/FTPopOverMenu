@@ -1,6 +1,6 @@
 # FTPopOverMenu
 
-FTPopOverMenu. A pop over menu which is maybe the easiest to use.
+FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 
 ## ScreenShots
 
@@ -62,6 +62,12 @@ FTPopOverMenu. A pop over menu which is maybe the easiest to use.
                                  
                              }];
 ```
+
+##Installation
+* clone this repo.
+* Simply drop the /FTPopOverMenu folder into your project.
+* import "FTPopOverMenu.h"
+* Enjoy！ 😊
 
 
 
