@@ -2,8 +2,9 @@
 
 FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 
-[![Twitter Follow](https://img.shields.io/twitter/follow/liufengting.svg?style=social)](https://twitter.com/liufengting)
-[![Coverage Status](https://coveralls.io/repos/github/liufengting/FTPopOverMenu/badge.svg?branch=master)](https://github.com/liufengting/FTPopOverMenu?branch=master)
+[![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting)
+
+
 
 
 ## ScreenShots
