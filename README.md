@@ -2,6 +2,8 @@
 
 FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 
+[![Twitter Follow](https://img.shields.io/twitter/follow/liufengting.svg?style=social)](https://twitter.com/liufengting)
+
 ## ScreenShots
 
 <img src="/ScreenShots/Demo.gif" width="400"/>
