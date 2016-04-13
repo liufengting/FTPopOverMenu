@@ -3,8 +3,10 @@
 FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 
 [![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
-[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)&nbsp;
-
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/network)
+[![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/issues)
 
 
 
