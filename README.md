@@ -2,7 +2,8 @@
 
 FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 
-[![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting)
+[![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
+[![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)&nbsp;
 
 
 
