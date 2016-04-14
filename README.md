@@ -4,10 +4,12 @@ FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 
 [![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)
+[![Version](https://img.shields.io/cocoapods/v/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
+[![Platform](https://img.shields.io/cocoapods/p/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
+[![CI Status](http://img.shields.io/travis/liufengting/FTPopOverMenu.svg?style=flat)](https://travis-ci.org/liufengting/FTPopOverMenu)
 [![GitHub forks](https://img.shields.io/github/forks/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/network)
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 [![GitHub issues](https://img.shields.io/github/issues/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/issues)
-
 
 
 ## ScreenShots
