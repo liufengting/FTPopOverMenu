@@ -74,11 +74,23 @@ FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 ```
 
 ##Installation
+
+###Manual
 * clone this repo.
 * Simply drop the /FTPopOverMenu folder into your project.
 * import "FTPopOverMenu.h"
 * Enjoy！ 😊
 
+###Cocoapods
+FTPopOverMenu is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
+```ruby
+pod "FTPopOverMenu"
+```
+
+## License
+
+FTPopOverMenu is available under the MIT license. See the LICENSE file for more info.
 
 
