@@ -79,7 +79,7 @@ FTPopOverMenu. A pop over menu which is maybe the easiest one to use.
 * clone this repo.
 * Simply drop the /FTPopOverMenu folder into your project.
 * import "FTPopOverMenu.h"
-* Enjoy！ 😊
+* Enjoy！ 
 
 ###Cocoapods
 FTPopOverMenu is available through [CocoaPods](http://cocoapods.org). To install
