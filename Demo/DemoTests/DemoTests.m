@@ -32,8 +32,8 @@
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+
+    // Put the code you want to measure the time of here.
         [FTPopOverMenu showForSender:[[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)]
                             withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
                       imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
@@ -46,7 +46,6 @@
                                NSLog(@"user canceled. do nothing.");
                                
                            }];
-    }];
 }
 
 @end
