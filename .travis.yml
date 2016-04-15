@@ -1,45 +1,13 @@
-branches:
+# references:
+# * http://www.objc.io/issue-6/travis-ci.html
+# * https://github.com/supermarin/xcpretty#usage
 
-  only:
-
-    - master
-
-matrix:
-
-  include:
-
-    - language: objective-c
-
-      os: osx
-
-      osx_image: xcode7.3
-
-      env: TEST_TYPE=iOS
-
-install:
-
-- |
-
-  if [ "$TEST_TYPE" = "iOS" ]; then
-
-    gem install xcpretty -N --no-ri --no-rdoc
-
-  elif [ "$TEST_TYPE" = Carthage ]; then
-
-    brew install carthage || brew upgrade carthage
-
-  fi
-
+language: objective-c
+# cache: cocoapods
+# podfile: Example/Podfile
+# before_install:
+# - gem install cocoapods # Since Travis is not always on latest version
+# - pod install --project-directory=Example
 script:
-
-- |
-
-  if [ "$TEST_TYPE" = "iOS" ]; then
-
-    cd iOS
-
-    set -o pipefail
-
-    xcodebuild build -xcodeproj Demo.xcodeproj -scheme Demo -sdk iphonesimulator -configuration Release | xcpretty -c
-  fi
-
+- set -o pipefail && xcodebuild test -workspace Example/FTPickerView.xcworkspace -scheme FTPickerView-Example -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO | xcpretty
+- pod lib lint
