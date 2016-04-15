@@ -1,0 +1,3 @@
+language: objective-c 
+xcode_project: Demo/Demo.xcodeproj 
+xcode_scheme: DemoTests

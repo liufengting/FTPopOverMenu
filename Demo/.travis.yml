@@ -1,0 +1,5 @@
+language: objective-c #语言种类
+
+xcode_project: MyNewProject.xcodeproj 
+
+xcode_scheme: DemoTests
