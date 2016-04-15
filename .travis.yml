@@ -1,3 +1,45 @@
-language: objective-c 
-xcode_project: Demo/Demo.xcodeproj 
-xcode_scheme: Demo
+branches:
+
+  only:
+
+    - master
+
+matrix:
+
+  include:
+
+    - language: objective-c
+
+      os: osx
+
+      osx_image: xcode7.3
+
+      env: TEST_TYPE=iOS
+
+install:
+
+- |
+
+  if [ "$TEST_TYPE" = "iOS" ]; then
+
+    gem install xcpretty -N --no-ri --no-rdoc
+
+  elif [ "$TEST_TYPE" = Carthage ]; then
+
+    brew install carthage || brew upgrade carthage
+
+  fi
+
+script:
+
+- |
+
+  if [ "$TEST_TYPE" = "iOS" ]; then
+
+    cd iOS
+
+    set -o pipefail
+
+    xcodebuild build -xcodeproj Demo.xcodeproj -scheme Demo -sdk iphonesimulator -configuration Release | xcpretty -c
+  fi
+
