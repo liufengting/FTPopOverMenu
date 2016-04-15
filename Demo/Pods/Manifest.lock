@@ -1,0 +1,10 @@
+PODS:
+  - FTPopOverMenu (1.0.0)
+
+DEPENDENCIES:
+  - FTPopOverMenu (~> 1.0.0)
+
+SPEC CHECKSUMS:
+  FTPopOverMenu: 5859bb582a34f41929e5da6da3e861729ea7374d
+
+COCOAPODS: 0.39.0
