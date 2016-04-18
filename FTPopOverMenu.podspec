@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/liufengting/FTPopOverMenu"
   s.screenshots  = "https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/ScreenShots/Demo.gif"
   s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.platform     = :ios, "7.0"
+  s.platform     = ios, "7.0"
   s.source       = { :git => "https://github.com/liufengting/FTPopOverMenu.git", :tag => "1.0.0" }
   s.source_files  = "FTPopOverMenu", "FTPopOverMenu/*.{h,m}"
   s.requires_arc = true
