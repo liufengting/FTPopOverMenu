@@ -13,8 +13,7 @@ A pop over menu which is maybe the easiest one to use.
 
 ## ScreenShots
 
-<img src="/ScreenShots/Demo.gif" width="400"/>
-
+<img src="/ScreenShots/Demo.gif" width="250"/>
 
 
 ## Useage
