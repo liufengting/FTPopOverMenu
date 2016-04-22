@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+
+
 /**
  *  FTPopOverMenuArrowDirection
  */
@@ -29,19 +31,20 @@ typedef void (^FTPopOverMenuDoneBlock)(NSInteger selectedIndex);
  */
 typedef void (^FTPopOverMenuDismissBlock)();
 
+
+
 /**
  *  FTPopOverMenuCell
  */
 @interface FTPopOverMenuCell : UITableViewCell
-
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName;
-
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName isActive:(NSString *)isActive;
 @end
+
+
 /**
  *  FTPopOverMenuView
  */
 @interface FTPopOverMenuView : UIControl
-
 @property (nonatomic,strong)UIColor *tintColor;
 /**
  *  Show Method
@@ -127,6 +130,24 @@ typedef void (^FTPopOverMenuDismissBlock)();
 + (void) showFromSenderFrame:(CGRect )senderFrame
                     withMenu:(NSArray<NSString*> *)menuArray
               imageNameArray:(NSArray<NSString*> *)imageNameArray
+                   doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+                dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+/**
+ *  show method with SenderFrame with imageNameArray
+ *
+ *  @param senderFrame    senderFrame
+ *  @param menuArray      menuArray
+ *  @param imageNameArray imageNameArray
+ *  @param isActiveArray  menuIsActive
+ *  @param doneBlock      doneBlock
+ *  @param dismissBlock   dismissBlock
+ 
+ */
++ (void) showFromSenderFrame:(CGRect )senderFrame
+                    withMenu:(NSArray<NSString*> *)menuArray
+              imageNameArray:(NSArray<NSString*> *)imageNameArray
+               isActiveArray:(NSArray<NSString*> *)menuIsActive
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 /**
