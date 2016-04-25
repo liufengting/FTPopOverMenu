@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UIImage+Tint.h"
+#import "CR.h"
 
 /**
  *  FTPopOverMenuArrowDirection
@@ -58,6 +59,7 @@ typedef void (^FTPopOverMenuDismissBlock)();
 -(void)showWithAnglePoint:(CGPoint)anglePoint
             withNameArray:(NSArray<NSString*> *)nameArray
            imageNameArray:(NSArray<NSString*> *)imageNameArray
+            isActiveArray:(NSArray<NSString*> *)menuIsActive
            arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection
                 doneBlock:(FTPopOverMenuDoneBlock)doneBlock;
 @end
@@ -150,6 +152,19 @@ typedef void (^FTPopOverMenuDismissBlock)();
                isActiveArray:(NSArray<NSString*> *)menuIsActive
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+
+
++ (void) showForSender:(UIView *)sender
+              withMenu:(NSArray<NSString*> *)menuArray
+        imageNameArray:(NSArray<NSString*> *)imageNameArray
+         isActiveArray:(NSArray<NSString*> *)menuIsActive
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+
+
+
 /**
  *  dismiss method
  */
