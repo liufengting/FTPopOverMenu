@@ -48,7 +48,7 @@ A pop over menu which is maybe the easiest one to use.
                           
                        }];
 ```
-* From SenderFrame, Menu Without Images
+* From SenderFrame/NavigationItem, Menu Without Images
  
 ```objective-c
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
@@ -60,7 +60,7 @@ A pop over menu which is maybe the easiest one to use.
                              }];
 ```
 
-* From SenderFrame, Menu With Images
+* From SenderFrame/NavigationItem, Menu With Images
  
 ```objective-c
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
