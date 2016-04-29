@@ -10,11 +10,20 @@ A pop over menu which is maybe the easiest one to use.
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 
 
+##Installation
 
-## ScreenShots
+###Manually
+* clone this repo.
+* Simply drop the '/FTPopOverMenu' folder into your project.
+* import 'FTPopOverMenu.h'
+* Enjoy！ 
 
-<img src="/ScreenShots/Demo.gif" width="250"/>
+###Cocoapods
+FTPopOverMenu is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
+```ruby
+pod "FTPopOverMenu"
+```
 
 ## Useage
 
@@ -74,20 +83,11 @@ A pop over menu which is maybe the easiest one to use.
 ```
 
 
-##Installation
 
-###Manually
-* clone this repo.
-* Simply drop the '/FTPopOverMenu' folder into your project.
-* import 'FTPopOverMenu.h'
-* Enjoy！ 
+## ScreenShots
 
-###Cocoapods
-FTPopOverMenu is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+<img src="/ScreenShots/Demo.gif" width="250"/>
 
-```ruby
-pod "FTPopOverMenu"
-```
 
 
 ##TODO
