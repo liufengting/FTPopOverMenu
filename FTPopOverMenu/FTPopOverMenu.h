@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIImage+Tint.h"
+#import "CR.h"
+
 /**
  *  FTPopOverMenuArrowDirection
  */
@@ -29,19 +32,20 @@ typedef void (^FTPopOverMenuDoneBlock)(NSInteger selectedIndex);
  */
 typedef void (^FTPopOverMenuDismissBlock)();
 
+
+
 /**
  *  FTPopOverMenuCell
  */
 @interface FTPopOverMenuCell : UITableViewCell
-
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName;
-
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName isActive:(NSString *)isActive;
 @end
+
+
 /**
  *  FTPopOverMenuView
  */
 @interface FTPopOverMenuView : UIControl
-
 @property (nonatomic,strong)UIColor *tintColor;
 /**
  *  Show Method
@@ -55,6 +59,7 @@ typedef void (^FTPopOverMenuDismissBlock)();
 -(void)showWithAnglePoint:(CGPoint)anglePoint
             withNameArray:(NSArray<NSString*> *)nameArray
            imageNameArray:(NSArray<NSString*> *)imageNameArray
+            isActiveArray:(NSArray<NSString*> *)menuIsActive
            arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection
                 doneBlock:(FTPopOverMenuDoneBlock)doneBlock;
 @end
@@ -129,6 +134,37 @@ typedef void (^FTPopOverMenuDismissBlock)();
               imageNameArray:(NSArray<NSString*> *)imageNameArray
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+/**
+ *  show method with SenderFrame with imageNameArray
+ *
+ *  @param senderFrame    senderFrame
+ *  @param menuArray      menuArray
+ *  @param imageNameArray imageNameArray
+ *  @param isActiveArray  menuIsActive
+ *  @param doneBlock      doneBlock
+ *  @param dismissBlock   dismissBlock
+ 
+ */
++ (void) showFromSenderFrame:(CGRect )senderFrame
+                    withMenu:(NSArray<NSString*> *)menuArray
+              imageNameArray:(NSArray<NSString*> *)imageNameArray
+               isActiveArray:(NSArray<NSString*> *)menuIsActive
+                   doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+                dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+
+
++ (void) showForSender:(UIView *)sender
+              withMenu:(NSArray<NSString*> *)menuArray
+        imageNameArray:(NSArray<NSString*> *)imageNameArray
+         isActiveArray:(NSArray<NSString*> *)menuIsActive
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+
+
+
 /**
  *  dismiss method
  */
