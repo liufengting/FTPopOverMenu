@@ -27,13 +27,16 @@
     _tableView.dataSource = self;
     
     
-    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(onNavButtonTapped:)]];
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(onNavButtonTapped:event:)]];
     
 
 }
 
--(void)onNavButtonTapped:(UIBarButtonItem *)sender{
-    
+
+-(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
+{
+    NSLog(@"%@", [event.allTouches.anyObject view]);
+
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
                               withMenu:@[@"123",@"234",@"345"]
                         imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]

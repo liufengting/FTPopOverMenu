@@ -102,6 +102,18 @@ typedef void (^FTPopOverMenuDismissBlock)();
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
+
++ (void) showFromEvent:(UIEvent *)event
+              withMenu:(NSArray<NSString*> *)menuArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
++ (void) showFromEvent:(UIEvent *)event
+              withMenu:(NSArray<NSString*> *)menuArray
+        imageNameArray:(NSArray<NSString*> *)imageNameArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
 /**
  *  show method with SenderFrame without images
  *

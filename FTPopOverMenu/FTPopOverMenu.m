@@ -275,6 +275,27 @@
     [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageNameArray doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
++ (void) showFromEvent:(UIEvent *)event
+              withMenu:(NSArray<NSString*> *)menuArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
+{
+    CGRect rect = [event.allTouches.anyObject view].frame;
+    rect.origin.y += 20;
+    [[self sharedInstance] showForSender:nil senderFrame:rect withMenu:menuArray imageNameArray:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+}
+
++ (void) showFromEvent:(UIEvent *)event
+              withMenu:(NSArray<NSString*> *)menuArray
+        imageNameArray:(NSArray<NSString*> *)imageNameArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
+{
+    CGRect rect = [event.allTouches.anyObject view].frame;
+    rect.origin.y += 20;
+    [[self sharedInstance] showForSender:nil senderFrame:rect withMenu:menuArray imageNameArray:imageNameArray doneBlock:doneBlock dismissBlock:dismissBlock];
+    
+}
 + (void) showFromSenderFrame:(CGRect )senderFrame
                    withMenu:(NSArray<NSString*> *)menuArray
                   doneBlock:(FTPopOverMenuDoneBlock)doneBlock
