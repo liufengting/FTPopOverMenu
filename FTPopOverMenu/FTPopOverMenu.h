@@ -102,12 +102,28 @@ typedef void (^FTPopOverMenuDismissBlock)();
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
-
+/**
+ *  show method for barbuttonitems with event without images
+ *
+ *  @param event          UIEvent
+ *  @param menuArray      menuArray
+ *  @param doneBlock      FTPopOverMenuDoneBlock
+ *  @param dismissBlock   FTPopOverMenuDismissBlock
+ */
 + (void) showFromEvent:(UIEvent *)event
               withMenu:(NSArray<NSString*> *)menuArray
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
+/**
+ *  show method for barbuttonitems with event with imageNameArray
+ *
+ *  @param event          UIEvent
+ *  @param menuArray      menuArray
+ *  @param imageNameArray imageNameArray
+ *  @param doneBlock      FTPopOverMenuDoneBlock
+ *  @param dismissBlock   FTPopOverMenuDismissBlock
+ */
 + (void) showFromEvent:(UIEvent *)event
               withMenu:(NSArray<NSString*> *)menuArray
         imageNameArray:(NSArray<NSString*> *)imageNameArray

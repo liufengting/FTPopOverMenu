@@ -35,9 +35,17 @@
 
 -(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
 {
-    NSLog(@"%@", [event.allTouches.anyObject view]);
 
-    [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
+    // comment this fowowing line and see how the other way to implement nav items
+    
+//#define IfMethodOne
+
+    
+#ifdef IfMethodOne
+    CGRect rect = [self.navigationController.navigationBar convertRect:[event.allTouches.anyObject view].frame toView:[[UIApplication sharedApplication] keyWindow]];
+    
+    
+    [FTPopOverMenu showFromSenderFrame:rect
                               withMenu:@[@"123",@"234",@"345"]
                         imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
                              doneBlock:^(NSInteger selectedIndex) {
@@ -45,7 +53,26 @@
                              } dismissBlock:^{
                                  
                              }];
+
+    
+#else
+    
+    [FTPopOverMenu setTintColor:[UIColor redColor]];
+    
+    [FTPopOverMenu showFromEvent:event
+                        withMenu:@[@"123",@"234",@"345"]
+                  imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                       doneBlock:^(NSInteger selectedIndex) {
+                           
+                       } dismissBlock:^{
+                           
+                       }];
+    
+#endif
+    
+    
 }
+
 
 
 #pragma mark - UITableViewDataSource,UITableViewDelegate

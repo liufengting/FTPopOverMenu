@@ -44,8 +44,11 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
+        UIImage *iconImage;
+        if (iconImageName.length) {
+            iconImage = [UIImage imageNamed:iconImageName];
+        }
         CGFloat margin = (FTDefaultMenuRowHeight - FTDefaultMenuIconWidth)/2;
-        UIImage *iconImage = [UIImage imageNamed:iconImageName];
         CGRect iconImageRect = CGRectMake(margin, margin, FTDefaultMenuIconWidth, FTDefaultMenuIconWidth);
         CGRect menuNameRect = CGRectMake(FTDefaultMenuRowHeight, margin, FTDefaultMenuWidth - FTDefaultMenuIconWidth - margin, FTDefaultMenuIconWidth);
         if (iconImage) {
@@ -265,7 +268,6 @@
 {
     [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:menuArray imageNameArray:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
-#pragma mark - Public Method
 + (void) showForSender:(UIView *)sender
               withMenu:(NSArray<NSString*> *)menuArray
         imageNameArray:(NSArray<NSString*> *)imageNameArray
@@ -280,9 +282,7 @@
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
 {
-    CGRect rect = [event.allTouches.anyObject view].frame;
-    rect.origin.y += 20;
-    [[self sharedInstance] showForSender:nil senderFrame:rect withMenu:menuArray imageNameArray:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:menuArray imageNameArray:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromEvent:(UIEvent *)event
@@ -291,9 +291,7 @@
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
 {
-    CGRect rect = [event.allTouches.anyObject view].frame;
-    rect.origin.y += 20;
-    [[self sharedInstance] showForSender:nil senderFrame:rect withMenu:menuArray imageNameArray:imageNameArray doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageNameArray doneBlock:doneBlock dismissBlock:dismissBlock];
     
 }
 + (void) showFromSenderFrame:(CGRect )senderFrame
@@ -322,6 +320,8 @@
     [self sharedInstance].popMenuView.tintColor = tintColor;
 }
 
+#pragma mark - Private Methods
+
 -(void)initViews
 {
     if (!_backgroundView) {
@@ -345,7 +345,6 @@
 
 
 
-#pragma mark - Public Method
 - (void) showForSender:(UIView *)sender
            senderFrame:(CGRect )senderFrame
               withMenu:(NSArray<NSString*> *)menuArray
