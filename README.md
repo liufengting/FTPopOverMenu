@@ -9,6 +9,9 @@ A pop over menu which is maybe the easiest one to use.
 [![CI Status](http://img.shields.io/travis/liufengting/FTPopOverMenu.svg?style=flat)](https://travis-ci.org/liufengting/FTPopOverMenu)
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 
+## ScreenShots
+
+<img src="/ScreenShots/Demo.gif" width="250"/>
 
 ##Installation
 
@@ -84,9 +87,6 @@ pod "FTPopOverMenu"
 
 
 
-## ScreenShots
-
-<img src="/ScreenShots/Demo.gif" width="250"/>
 
 
 
@@ -94,7 +94,7 @@ pod "FTPopOverMenu"
 
 * add cell selected state 
 * maybe some more positions
-* add navigation item tap support
+* add navigation item tap support(finished at 16/5/8)
 
 
 
