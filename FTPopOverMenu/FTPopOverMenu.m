@@ -56,7 +56,7 @@
         if (iconImage) {
             _iconImageView = [[UIImageView alloc]initWithFrame:iconImageRect];
             _iconImageView.backgroundColor = [UIColor clearColor];
-            _iconImageView.image = [iconImage imageTintedWithColor:colorAppTint];
+            _iconImageView.image = [iconImage rt_tintedImageWithColor:[UIColor appTint]];
             [self addSubview:_iconImageView];
         } else {
             menuNameRect = CGRectMake(margin,
@@ -78,7 +78,7 @@
         
         _isActive = [[UIImageView alloc]initWithFrame:activeImageRect];
         _isActive.backgroundColor = [UIColor clearColor];
-        _isActive.image = [[UIImage imageNamed:@"isActive"] imageTintedWithColor:colorBadgeColor];
+        _isActive.image = [[UIImage imageNamed:iconImageName] rt_tintedImageWithColor:[UIColor badgeColor]];
         _isActive.hidden = [isActive boolValue];
         [self addSubview:_isActive];
     }

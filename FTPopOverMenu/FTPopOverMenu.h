@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIImage+Tint.h"
-#import "CR.h"
+#import "UIImage+RTTint.h"
+
 
 /**
  *  FTPopOverMenuArrowDirection
