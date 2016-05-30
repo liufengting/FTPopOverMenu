@@ -1,6 +1,6 @@
 # FTPopOverMenu
 
-A pop over menu which is maybe the easiest one to use.
+A pop over menu which is maybe the easiest one to use. Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
 
 [![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)
