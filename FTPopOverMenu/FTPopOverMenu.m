@@ -247,6 +247,8 @@
 @property (nonatomic, strong) FTPopOverMenuView *popMenuView;
 @property (nonatomic, strong) FTPopOverMenuDoneBlock doneBlock;
 @property (nonatomic, strong) FTPopOverMenuDismissBlock dismissBlock;
+@property (nonatomic, strong) UIColor *tintColor;
+
 
 @end
 
@@ -317,7 +319,7 @@
 
 +(void)setTintColor:(UIColor *)tintColor
 {
-    [self sharedInstance].popMenuView.tintColor = tintColor;
+    [self sharedInstance].tintColor = tintColor;
 }
 
 #pragma mark - Private Methods
@@ -343,6 +345,13 @@
 
 }
 
+-(UIColor *)tintColor
+{
+    if (!_tintColor) {
+        return FTDefaultTintColor;
+    }
+    return _tintColor;
+}
 
 
 - (void) showForSender:(UIView *)sender
@@ -415,6 +424,7 @@
         menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), FTDefaultMenuWidth, menuHeight);
     }
     _popMenuView.frame = menuRect;
+    _popMenuView.tintColor = self.tintColor;
     
     [_popMenuView showWithAnglePoint:menuArrowPoint
                        withNameArray:menuArray
@@ -426,6 +436,7 @@
     
     [self show];
 }
+
 #pragma mark - UIGestureRecognizerDelegate
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 {
