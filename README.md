@@ -1,13 +1,13 @@
 # FTPopOverMenu
 
-A pop over menu which is maybe the easiest one to use. Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
-
 [![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)
 [![Version](https://img.shields.io/cocoapods/v/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
 [![Platform](https://img.shields.io/cocoapods/p/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
 [![CI Status](http://img.shields.io/travis/liufengting/FTPopOverMenu.svg?style=flat)](https://travis-ci.org/liufengting/FTPopOverMenu)
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
+
+A pop over menu which is maybe the easiest one to use.
 
 ## ScreenShots
 
@@ -85,16 +85,36 @@ pod "FTPopOverMenu"
                              }];
 ```
 
+* From barButtonItems 
+
+- First: add action with event to you barButtonItems 
+
+```objective-c
+    [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(onNavButtonTapped:event:)]];
+```
+
+- Second: implement the action
+
+```objective-c
+-(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
+{
+
+    [FTPopOverMenu showFromEvent:event
+                        withMenu:@[@"123",@"234",@"345"]
+                  imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                       doneBlock:^(NSInteger selectedIndex) {
+                           
+                       } dismissBlock:^{
+                           
+                       }];
+}
+```
 
 
 
+# More
 
-
-##TODO
-
-* add cell selected state 
-* maybe some more positions
-* add navigation item tap support(finished at 16/5/8)
+ Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
 
 
 
