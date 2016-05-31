@@ -30,13 +30,13 @@ pod "FTPopOverMenu"
 
 ## Useage
 
-* setTintColor
+### setTintColor
 
 ```objective-c
     [FTPopOverMenu setTintColor:[UIColor redColor]];
 ```
 
-* From SenderView, Menu Without Images
+### From SenderView, Menu Without Images
  
 ```objective-c
     [FTPopOverMenu showForSender:sender
@@ -48,7 +48,7 @@ pod "FTPopOverMenu"
                        }];
 ```
 
-* From SenderView, Menu With Images
+### From SenderView, Menu With Images
  
 ```objective-c
     [FTPopOverMenu showForSender:sender
@@ -60,7 +60,7 @@ pod "FTPopOverMenu"
                           
                        }];
 ```
-* From SenderFrame/NavigationItem, Menu Without Images
+### From SenderFrame/NavigationItem, Menu Without Images
  
 ```objective-c
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
@@ -72,7 +72,7 @@ pod "FTPopOverMenu"
                              }];
 ```
 
-* From SenderFrame/NavigationItem, Menu With Images
+### From SenderFrame/NavigationItem, Menu With Images
  
 ```objective-c
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
@@ -85,7 +85,7 @@ pod "FTPopOverMenu"
                              }];
 ```
 
-* From barButtonItems 
+### From barButtonItems 
 
 - First: add action with event to you barButtonItems 
 
