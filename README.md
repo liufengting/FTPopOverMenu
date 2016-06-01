@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
 [![CI Status](http://img.shields.io/travis/liufengting/FTPopOverMenu.svg?style=flat)](https://travis-ci.org/liufengting/FTPopOverMenu)
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
-
+[![Gitter](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 A pop over menu which is maybe the easiest one to use.
 
 ## ScreenShots
