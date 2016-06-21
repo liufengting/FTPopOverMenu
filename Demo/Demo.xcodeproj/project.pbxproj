@@ -18,6 +18,7 @@
 		5A2E15A71CC0EDBC003BDE12 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15A41CC0EDBC003BDE12 /* SecondViewController.m */; };
 		5A2E15A81CC0EDBC003BDE12 /* SecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15A61CC0EDBC003BDE12 /* SecondTableViewCell.m */; };
 		5A2E15AC1CC11B28003BDE12 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15AB1CC11B28003BDE12 /* FTPopOverMenu.m */; };
+		5A6255581D0A949800ABB815 /* FTPopTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6255571D0A949800ABB815 /* FTPopTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		5A2E15A61CC0EDBC003BDE12 /* SecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewCell.m; sourceTree = "<group>"; };
 		5A2E15AA1CC11B28003BDE12 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		5A2E15AB1CC11B28003BDE12 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
+		5A6255561D0A949800ABB815 /* FTPopTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopTableViewController.h; sourceTree = "<group>"; };
+		5A6255571D0A949800ABB815 /* FTPopTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				5A2E15711CC0ED79003BDE12 /* AppDelegate.m */,
 				5A2E15A01CC0EDB0003BDE12 /* ViewController.h */,
 				5A2E15A11CC0EDB0003BDE12 /* ViewController.m */,
+				5A6255561D0A949800ABB815 /* FTPopTableViewController.h */,
+				5A6255571D0A949800ABB815 /* FTPopTableViewController.m */,
 				5A2E15A31CC0EDBC003BDE12 /* SecondViewController.h */,
 				5A2E15A41CC0EDBC003BDE12 /* SecondViewController.m */,
 				5A2E15A51CC0EDBC003BDE12 /* SecondTableViewCell.h */,
@@ -239,6 +244,7 @@
 				TargetAttributes = {
 					5A2E15691CC0ED79003BDE12 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = E83AC9WR2F;
 					};
 					5A2E15821CC0ED7A003BDE12 = {
 						CreatedOnToolsVersion = 7.3;
@@ -307,6 +313,7 @@
 				5A2E15AC1CC11B28003BDE12 /* FTPopOverMenu.m in Sources */,
 				5A2E15A21CC0EDB0003BDE12 /* ViewController.m in Sources */,
 				5A2E15721CC0ED79003BDE12 /* AppDelegate.m in Sources */,
+				5A6255581D0A949800ABB815 /* FTPopTableViewController.m in Sources */,
 				5A2E156F1CC0ED79003BDE12 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,10 +455,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liufengting.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liufengting.FTPopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -460,10 +468,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.liufengting.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.liufengting.FTPopMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
