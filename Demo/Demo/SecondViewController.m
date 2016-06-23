@@ -26,7 +26,6 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
-    
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(onNavButtonTapped:event:)]];
     
 
