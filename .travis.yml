@@ -2,6 +2,6 @@ language: objective-c
 xcode_project: Demo/Demo.xcodeproj
 xcode_scheme: DemoTests.xcodeproj
 script: 
-  - xctool -project {Demo/Demo.xcodeproj} -scheme {DemoTests.xcodeproj} build test -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  - xctool -project {{Demo/Demo.xcodeproj}} -scheme {{DemoTests.xcodeproj}} build test -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
 after_success:
   - bash <(curl -s https://codecov.io/bash)
