@@ -1,9 +1,2 @@
-language: objective-cj
-#sudo: required
-#before_install:
- # - brew update
- # - brew outdated xctool || brew upgrade xctool
-#script: 
- # - xctool -project Demo/Demo.xcodeproj -scheme DemoTests build test -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
-#after_success:
- # - bash <(curl -s https://codecov.io/bash)
+language: objective-c
+
