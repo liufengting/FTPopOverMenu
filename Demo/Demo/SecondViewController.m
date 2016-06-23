@@ -9,7 +9,6 @@
 #import "SecondViewController.h"
 #import "SecondTableViewCell.h"
 #import "FTPopOverMenu.h"
-#import "FTPopTableViewController.h"
 
 @interface SecondViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -100,19 +99,24 @@
 
 -(void)onButtonOneTapped:(UIButton *)sender
 {
-//    [FTPopOverMenu showForSender:sender
-//                        withMenu:@[@"123",@"234",@"345"]
-//                       doneBlock:^(NSInteger selectedIndex) {
-//                           
-//                       } dismissBlock:^{
-//                           
-//                       }];
-    FTPopTableViewController *pop = [[FTPopTableViewController alloc] init];
-    pop.sourceView = sender;
-    pop.titleString = @"Some";
-    pop.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
-    pop.menuStringArray = @[@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",];
-    [self presentViewController:pop animated:YES completion:nil];
+    [FTPopOverMenu showForSender:sender
+                        withMenu:@[@"123",@"234",@"345"]
+                       doneBlock:^(NSInteger selectedIndex) {
+                           
+                       } dismissBlock:^{
+                           
+                       }];
+
+    /**
+     The following method is another way of doing it, you can check out it at: https://github.com/liufengting/FTPopMenu
+     */
+    
+//    FTPopTableViewController *pop = [[FTPopTableViewController alloc] init];
+//    pop.sourceView = sender;
+//    pop.titleString = @"Some";
+//    pop.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
+//    pop.menuStringArray = @[@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",];
+//    [self presentViewController:pop animated:YES completion:nil];
     
     
 }
