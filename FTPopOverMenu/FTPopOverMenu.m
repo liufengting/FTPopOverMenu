@@ -249,6 +249,12 @@
 @property (nonatomic, strong) FTPopOverMenuDismissBlock dismissBlock;
 @property (nonatomic, strong) UIColor *tintColor;
 
+@property (nonatomic, strong) UIView *sender;
+@property (nonatomic, assign) CGRect senderFrame;
+@property (nonatomic, strong) NSArray<NSString*> *menuArray;
+@property (nonatomic, strong) NSArray<NSString*> *menuImageArray;
+@property (nonatomic, assign) BOOL isCurrentlyOnScreen;
+
 
 @end
 
@@ -324,6 +330,18 @@
 
 #pragma mark - Private Methods
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(onChangeStatusBarOrientationNotification:)
+                                                     name:UIApplicationDidChangeStatusBarOrientationNotification
+                                                   object:nil];
+    }
+    return self;
+}
+
 -(void)initViews
 {
     if (!_backgroundView) {
@@ -348,9 +366,18 @@
 -(UIColor *)tintColor
 {
     if (!_tintColor) {
-        return FTDefaultTintColor;
+        _tintColor = FTDefaultTintColor;
     }
     return _tintColor;
+}
+
+-(void)onChangeStatusBarOrientationNotification:(NSNotification *)notification
+{
+    if (self.isCurrentlyOnScreen) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self adjustPopOverMenu];
+        });
+    }
 }
 
 
@@ -367,25 +394,37 @@
     }
     
     [self initViews];
-    
+    self.sender = sender;
+    self.senderFrame = senderFrame;
+    self.menuArray = menuArray;
+    self.menuImageArray = imageNameArray;
     self.doneBlock = doneBlock;
     self.dismissBlock = dismissBlock;
-
     
+    
+    [self adjustPopOverMenu];
+}
+
+-(void)adjustPopOverMenu
+{
+    
+    [self.backgroundView setFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT)];
     
     CGRect senderRect ;
     
-    if (sender) {
-        senderRect = [sender.superview convertRect:sender.frame toView:_backgroundView];
+    if (self.sender) {
+        senderRect = [self.sender.superview convertRect:self.sender.frame toView:_backgroundView];
     }else{
-        senderRect = senderFrame;
+        senderRect = self.senderFrame;
     }
-    CGFloat menuHeight = FTDefaultMenuRowHeight * menuArray.count + FTDefaultMenuArrowHeight;
+    CGFloat menuHeight = FTDefaultMenuRowHeight * self.menuArray.count + FTDefaultMenuArrowHeight;
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
     CGRect menuRect = CGRectZero;
     FTPopOverMenuArrowDirection arrowDirection;
     
+    NSLog(@"senderRect : %@\n\n\n",NSStringFromCGRect(senderRect));
+
     if (senderRect.origin.y + senderRect.size.height + menuHeight < KSCREEN_HEIGHT) {
         arrowDirection = FTPopOverMenuArrowDirectionUp;
         menuArrowPoint.y = 0;
@@ -423,12 +462,13 @@
         
         menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), FTDefaultMenuWidth, menuHeight);
     }
+//    NSLog(@"menuRect : %@ \n",NSStringFromCGRect(menuRect));
     _popMenuView.frame = menuRect;
     _popMenuView.tintColor = self.tintColor;
     
     [_popMenuView showWithAnglePoint:menuArrowPoint
-                       withNameArray:menuArray
-                      imageNameArray:imageNameArray
+                       withNameArray:self.menuArray
+                      imageNameArray:self.menuImageArray
                       arrowDirection:arrowDirection
                            doneBlock:^(NSInteger selectedIndex) {
                                [self doneActionWithSelectedIndex:selectedIndex];
@@ -436,6 +476,7 @@
     
     [self show];
 }
+
 
 #pragma mark - UIGestureRecognizerDelegate
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -457,6 +498,7 @@
 
 - (void)show
 {
+    self.isCurrentlyOnScreen = YES;
     [UIView animateWithDuration:FTDefaultAnimationDuration
                      animations:^{
                          _popMenuView.alpha = 1;
@@ -467,6 +509,7 @@
 
 - (void)dismiss
 {
+    self.isCurrentlyOnScreen = NO;
     [self doneActionWithSelectedIndex:-1];
 }
 
