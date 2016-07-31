@@ -10,7 +10,7 @@
 [![Gitter](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
-A pop over menu which is maybe the easiest one to use. Now supports both portrait and landscape.
+A pop over menu for iOS which is maybe the easiest one to use. Now supports both portrait and landscape.
 
 ## ScreenShots
 
@@ -25,7 +25,7 @@ A pop over menu which is maybe the easiest one to use. Now supports both portrai
 * Enjoy！ 
 
 ###Cocoapods
-FTPopOverMenu is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
+`FTPopOverMenu` is available through [CocoaPods](http://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'FTPopOverMenu'
