@@ -417,14 +417,16 @@
     }else{
         senderRect = self.senderFrame;
     }
+    if (senderRect.origin.y > KSCREEN_HEIGHT) {
+        senderRect.origin.y = KSCREEN_HEIGHT;
+    }
+    
     CGFloat menuHeight = FTDefaultMenuRowHeight * self.menuArray.count + FTDefaultMenuArrowHeight;
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
     CGRect menuRect = CGRectZero;
     FTPopOverMenuArrowDirection arrowDirection;
     
-    NSLog(@"senderRect : %@\n\n\n",NSStringFromCGRect(senderRect));
-
     if (senderRect.origin.y + senderRect.size.height + menuHeight < KSCREEN_HEIGHT) {
         arrowDirection = FTPopOverMenuArrowDirectionUp;
         menuArrowPoint.y = 0;
@@ -462,9 +464,10 @@
         
         menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), FTDefaultMenuWidth, menuHeight);
     }
-//    NSLog(@"menuRect : %@ \n",NSStringFromCGRect(menuRect));
+
     _popMenuView.frame = menuRect;
     _popMenuView.tintColor = self.tintColor;
+    
     
     [_popMenuView showWithAnglePoint:menuArrowPoint
                        withNameArray:self.menuArray
