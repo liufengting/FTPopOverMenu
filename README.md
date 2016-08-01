@@ -5,6 +5,7 @@
 [![Version](https://img.shields.io/cocoapods/v/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
 [![Platform](https://img.shields.io/cocoapods/p/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
 [![Download](https://img.shields.io/cocoapods/dt/FTPopOverMenu.svg?maxAge=2592000)](http://cocoapods.org/pods/FTPopOverMenu)
+[![CocoaPods](https://img.shields.io/cocoapods/at/FTPopOverMenu.svg?maxAge=2592000)](http://cocoapods.org/pods/FTPopOverMenu)
 [![CI Status](http://img.shields.io/travis/liufengting/FTPopOverMenu.svg?style=flat)](https://travis-ci.org/liufengting/FTPopOverMenu)
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 [![Gitter](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
