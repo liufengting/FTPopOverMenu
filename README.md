@@ -20,7 +20,7 @@ A pop over menu for iOS which is maybe the easiest one to use. Now supports both
 ##Installation
 
 ###Manually
-* clone this repo.<!-- more -->
+* clone this repo.
 * Simply drop the '/FTPopOverMenu' folder into your project.
 * import 'FTPopOverMenu.h'
 * Enjoy！ 
