@@ -35,14 +35,16 @@
 -(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
 {
 
-    // comment this fowowing line and see how the other way to implement nav items
+    // provide two methods to deal with the barbuttonitems
+    
+    
+// comment this fowowing line and see how the other way of dealing with barbuttonitems
     
 //#define IfMethodOne
 
     
 #ifdef IfMethodOne
     CGRect rect = [self.navigationController.navigationBar convertRect:[event.allTouches.anyObject view].frame toView:[[UIApplication sharedApplication] keyWindow]];
-    
     
     [FTPopOverMenu showFromSenderFrame:rect
                               withMenu:@[@"123",@"234",@"345"]
@@ -56,7 +58,7 @@
     
 #else
     
-    [FTPopOverMenu setTintColor:[UIColor redColor]];
+//    [FTPopOverMenu setTintColor:[UIColor redColor]];
     
     [FTPopOverMenu showFromEvent:event
                         withMenu:@[@"123",@"234",@"345"]

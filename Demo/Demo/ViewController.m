@@ -21,6 +21,9 @@
 }
 -(void)actionWithSender:(UIButton *)sender
 {
+    
+    [FTPopOverMenu setTintColor:sender.titleLabel.textColor];
+    
     [FTPopOverMenu showForSender:sender
                         withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
                   imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]

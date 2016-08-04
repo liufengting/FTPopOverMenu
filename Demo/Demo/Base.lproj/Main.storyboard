@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VXD-8Z-qZ2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VXD-8Z-qZ2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
@@ -17,29 +17,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pN-aZ-Go6">
-                                <rect key="frame" x="170" y="72" width="35" height="30"/>
+                                <rect key="frame" x="163" y="72" width="49" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Qt4-YY-fIp"/>
                                     <constraint firstAttribute="height" constant="30" id="yzm-H6-TKp"/>
                                 </constraints>
-                                <state key="normal" title="TWO"/>
+                                <state key="normal" title="GREEN">
+                                    <color key="titleColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Qt4-YY-fIp"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="actionTwo:" destination="779-PW-fkb" eventType="touchUpInside" id="pSe-m4-rct"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0jL-XU-Bo9">
-                                <rect key="frame" x="325" y="72" width="30" height="30"/>
+                                <rect key="frame" x="295" y="72" width="60" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5Gz-Dq-o1O"/>
                                     <constraint firstAttribute="width" constant="35" id="bit-z1-Wu2"/>
                                     <constraint firstAttribute="height" constant="30" id="diO-uL-3Bt"/>
                                     <constraint firstAttribute="width" constant="30" id="vXh-3b-whF"/>
                                 </constraints>
-                                <state key="normal" title="Thr"/>
+                                <state key="normal" title="YELLOW">
+                                    <color key="titleColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="bit-z1-Wu2"/>
                                         <exclude reference="diO-uL-3Bt"/>
+                                        <exclude reference="vXh-3b-whF"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -47,18 +57,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0i-b0-8bY">
-                                <rect key="frame" x="20" y="72" width="31" height="30"/>
+                                <rect key="frame" x="20" y="72" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="TNf-xO-NvQ"/>
                                     <constraint firstAttribute="width" constant="35" id="bJ1-D9-dAr"/>
                                     <constraint firstAttribute="height" constant="30" id="jDz-ML-C4s"/>
                                     <constraint firstAttribute="width" constant="31" id="lY7-mA-Mtl"/>
                                 </constraints>
-                                <state key="normal" title="ONE"/>
+                                <state key="normal" title="RED">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="bJ1-D9-dAr"/>
                                         <exclude reference="jDz-ML-C4s"/>
+                                        <exclude reference="lY7-mA-Mtl"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -66,27 +79,37 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZmD-Vv-Dmo">
-                                <rect key="frame" x="170" y="617" width="35" height="30"/>
+                                <rect key="frame" x="159" y="617" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="Br5-cN-Zwb"/>
                                     <constraint firstAttribute="height" constant="30" id="d4f-ve-dO2"/>
                                 </constraints>
-                                <state key="normal" title="FIV"/>
+                                <state key="normal" title="Random">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Br5-cN-Zwb"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="actionFiv:" destination="779-PW-fkb" eventType="touchUpInside" id="ddg-b6-3ub"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTl-Mu-tGB">
-                                <rect key="frame" x="325" y="617" width="30" height="30"/>
+                                <rect key="frame" x="315" y="617" width="40" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="33u-Id-qcm"/>
                                     <constraint firstAttribute="height" constant="30" id="N1b-Hp-te2"/>
                                     <constraint firstAttribute="height" constant="30" id="Nfw-W8-jjt"/>
                                     <constraint firstAttribute="width" constant="35" id="QF3-eX-nb8"/>
                                 </constraints>
-                                <state key="normal" title="SIX"/>
+                                <state key="normal" title="CYAN">
+                                    <color key="titleColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="33u-Id-qcm"/>
                                         <exclude reference="N1b-Hp-te2"/>
                                         <exclude reference="QF3-eX-nb8"/>
                                     </mask>
@@ -96,17 +119,20 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="faO-NC-Rhn">
-                                <rect key="frame" x="20" y="617" width="31" height="30"/>
+                                <rect key="frame" x="20" y="617" width="48" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="CkE-Lb-Zrt"/>
                                     <constraint firstAttribute="width" constant="31" id="I9h-rH-4l1"/>
                                     <constraint firstAttribute="height" constant="30" id="QGg-ni-NQC"/>
                                     <constraint firstAttribute="height" constant="30" id="ZSY-bj-axb"/>
                                 </constraints>
-                                <state key="normal" title="FOR"/>
+                                <state key="normal" title="BLACK">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="CkE-Lb-Zrt"/>
+                                        <exclude reference="I9h-rH-4l1"/>
                                         <exclude reference="QGg-ni-NQC"/>
                                     </mask>
                                 </variation>
@@ -230,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32x-Lb-Hv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1942.5" y="336.5"/>
+            <point key="canvasLocation" x="1906.5" y="336.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Kta-KX-5hK">
@@ -249,7 +275,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d1L-iD-ka9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="337"/>
+            <point key="canvasLocation" x="1034.5" y="336.5"/>
         </scene>
     </scenes>
 </document>

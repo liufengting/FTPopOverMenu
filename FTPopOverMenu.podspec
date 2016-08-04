@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FTPopOverMenu"
-  s.version      = "1.1.4"
+  s.version      = "1.1.5"
   s.summary      = "A pop over menu."
   s.description  = <<-DESC
           A pop over menu which is maybe the easiest one to use. Supports both portrait and landscape.

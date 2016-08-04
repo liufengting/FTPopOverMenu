@@ -439,12 +439,9 @@
             menuX = FTDefaultMargin;
         }else{
             menuArrowPoint.x = FTDefaultMenuWidth/2;
-            menuX = senderRect.origin.x + (senderRect.size.height)/2 - FTDefaultMenuWidth/2;
+            menuX = senderRect.origin.x + (senderRect.size.width)/2 - FTDefaultMenuWidth/2;
         }
         menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), FTDefaultMenuWidth, menuHeight);
-        
-        
-        
     }else{
         arrowDirection = FTPopOverMenuArrowDirectionDown;
         menuArrowPoint.y = menuHeight;
@@ -458,7 +455,7 @@
             menuX = FTDefaultMargin;
         }else{
             menuArrowPoint.x = FTDefaultMenuWidth/2;
-            menuX = senderRect.origin.x + (senderRect.size.height)/2 - FTDefaultMenuWidth/2;
+            menuX = senderRect.origin.x + (senderRect.size.width)/2 - FTDefaultMenuWidth/2;
         }
         //same with up
         
