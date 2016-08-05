@@ -15,7 +15,7 @@ A pop over menu for iOS which is maybe the easiest one to use. Now supports both
 
 ## ScreenShots
 
-<img src="/ScreenShots/Demo2.gif" width="350"/><img src="/ScreenShots/Demo.gif" width="250"/>
+<img src="/ScreenShots/Demo2.gif" width="400"/><img src="/ScreenShots/Demo.gif" width="250"/>
 
 ##Installation
 
