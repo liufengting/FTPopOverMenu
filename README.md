@@ -15,7 +15,7 @@ A pop over menu for iOS which is maybe the easiest one to use. Now supports both
 
 ## ScreenShots
 
-<img src="/ScreenShots/Demo2.gif" width="500"/><img src="/ScreenShots/Demo.gif" width="250"/>
+<img src="/ScreenShots/Demo.gif" width="250"/>
 
 ##Installation
 
@@ -118,8 +118,9 @@ pod 'FTPopOverMenu'
 
 # More
 
- Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
+Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
 
+<img src="/ScreenShots/Demo2.gif" width="500"/>
 
 
 ## License
