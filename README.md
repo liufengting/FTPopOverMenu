@@ -11,7 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 [![Gitter](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-A pop over menu for iOS which is maybe the easiest one to use. Now supports both portrait and landscape.
+`FTPopOverMenu` is a pop over menu for iOS which is maybe the easiest one to use. Now supports both portrait and landscape.
 
 ## ScreenShots
 
