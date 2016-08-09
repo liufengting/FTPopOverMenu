@@ -19,11 +19,12 @@
     [super viewDidLoad];
 
 }
--(void)actionWithSender:(UIButton *)sender
+
+- (IBAction)showMenuFromButton:(UIButton *)sender
 {
     
-    [FTPopOverMenu setTintColor:sender.titleLabel.textColor];
-    
+//    [FTPopOverMenu setTintColor:[UIColor brownColor]];
+
     [FTPopOverMenu showForSender:sender
                         withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
                   imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
@@ -36,44 +37,9 @@
                            NSLog(@"user canceled. do nothing.");
                            
                        }];
-}
-
-- (IBAction)actionOne:(id)sender {
-
-    [self actionWithSender:sender];
-
-}
-
-- (IBAction)actionTwo:(id)sender {
-    
-    [self actionWithSender:sender];
     
 }
 
-- (IBAction)actionThr:(id)sender {
-    
-    [self actionWithSender:sender];
-
-}
-
-- (IBAction)actionFor:(id)sender {
-    
-    [self actionWithSender:sender];
-    
-}
-
-- (IBAction)actionFiv:(id)sender {
-    
-    [self actionWithSender:sender];
-
-}
-
-- (IBAction)actionSix:(id)sender {
-    
-    [self actionWithSender:sender];
-    
-
-}
 
 
 @end

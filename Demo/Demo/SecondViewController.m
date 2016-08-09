@@ -36,8 +36,6 @@
 {
 
     // provide two methods to deal with the barbuttonitems
-    
-    
 // comment this fowowing line and see how the other way of dealing with barbuttonitems
     
 //#define IfMethodOne
@@ -57,8 +55,6 @@
 
     
 #else
-    
-//    [FTPopOverMenu setTintColor:[UIColor redColor]];
     
     [FTPopOverMenu showFromEvent:event
                         withMenu:@[@"123",@"234",@"345"]
@@ -112,17 +108,6 @@
                            
                        }];
 
-    /**
-     The following method is another way of doing it, you can check out it at: https://github.com/liufengting/FTPopMenu
-     */
-    
-//    FTPopTableViewController *pop = [[FTPopTableViewController alloc] init];
-//    pop.sourceView = sender;
-//    pop.titleString = @"Some";
-//    pop.tintColor = [[UIColor whiteColor] colorWithAlphaComponent:0.2];
-//    pop.menuStringArray = @[@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",@"something important",];
-//    [self presentViewController:pop animated:YES completion:nil];
-    
     
 }
 
