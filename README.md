@@ -120,7 +120,7 @@ pod 'FTPopOverMenu'
 
 Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
 
-<img src="/ScreenShots/Demo2.gif" width="500"/>
+![FTPopMenu](https://raw.githubusercontent.com/liufengting/FTPopMenu/master/ScreenShots/ScreenShots2.png)
 
 
 ## License
