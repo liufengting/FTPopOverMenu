@@ -3,7 +3,7 @@
 [![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)
 [![Version](https://img.shields.io/cocoapods/v/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
-[![Platform](https://img.shields.io/cocoapods/p/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
+[![Codebeat badge](https://codebeat.co/badges/763991fb-8307-4683-8b19-6c8aba9f1683)](https://codebeat.co/projects/github-com-liufengting-ftpopovermenu)
 [![Download](https://img.shields.io/cocoapods/dt/FTPopOverMenu.svg?maxAge=2592000)](http://cocoapods.org/pods/FTPopOverMenu)
 [![CocoaPods](https://img.shields.io/cocoapods/at/FTPopOverMenu.svg?maxAge=2592000)](http://cocoapods.org/pods/FTPopOverMenu)
 [![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/FTPopOverMenu.svg?maxAge=2592000)](http://cocoapods.org/pods/FTPopOverMenu)
