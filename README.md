@@ -11,7 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 [![Gitter](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-`FTPopOverMenu` is a pop over menu for iOS which is maybe the easiest one to use. Now supports both portrait and landscape.
+`FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use. Supports both `portrait` and `landscape`. It can show from any UIView or UIBarbuttonItem.
 
 ## ScreenShots
 
@@ -118,13 +118,14 @@ pod 'FTPopOverMenu'
 
 # More
 
-Look for another way of doing this? [See Here](https://github.com/liufengting/FTPopMenu)
+Looking for another way of doing this? [Check this out.](https://github.com/liufengting/FTPopMenu) It was another way of show pop over menus, which is wrapped from UIPopoverViewController. Feel free to try it.
+ 
 
-![FTPopMenu](https://raw.githubusercontent.com/liufengting/FTPopMenu/master/ScreenShots/ScreenShots2.png)
+<img src="https://raw.githubusercontent.com/liufengting/FTPopMenu/master/ScreenShots/ScreenShots2.png" width="400"/>
 
 
 ## License
 
-FTPopOverMenu is available under the MIT license. See the LICENSE file for more info.
+`FTPopOverMenu` is available under the `MIT` license. See the `LICENSE` file for more info.
 
 
