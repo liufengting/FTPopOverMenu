@@ -118,7 +118,7 @@ pod 'FTPopOverMenu'
 
 # More
 
-Looking for another way of doing this? [Check this out.](https://github.com/liufengting/FTPopMenu) It was another way of show pop over menus, which is wrapped from UIPopoverViewController. Feel free to try it.
+Looking for another way of doing this? Take a look at `FTPopMenu` at [here](https://github.com/liufengting/FTPopMenu).  It was another way of show pop over menus, which is wrapped from UIPopoverViewController. Feel free to try it.
  
 
 <img src="https://raw.githubusercontent.com/liufengting/FTPopMenu/master/ScreenShots/ScreenShots2.png" width="400"/>
