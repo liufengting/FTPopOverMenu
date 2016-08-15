@@ -25,7 +25,19 @@
 
 #define FTPopOverMenuTableViewCellIndentifier @"FTPopOverMenuTableViewCellIndentifier"
 
-
+/**
+ *  FTPopOverMenuArrowDirection
+ */
+typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
+    /**
+     *  Up
+     */
+    FTPopOverMenuArrowDirectionUp,
+    /**
+     *  Down
+     */
+    FTPopOverMenuArrowDirectionDown,
+};
 
 #pragma mark - FTPopOverMenuCell
 
@@ -85,6 +97,7 @@
 @property (nonatomic, assign) FTPopOverMenuArrowDirection arrowDirection;
 @property (nonatomic, strong) FTPopOverMenuDoneBlock doneBlock;
 @property (nonatomic, strong) CAShapeLayer *backgroundLayer;
+@property (nonatomic,strong)UIColor *tintColor;
 
 @end
 
@@ -114,6 +127,7 @@
 -(void)showWithAnglePoint:(CGPoint)anglePoint
             withNameArray:(NSArray<NSString*> *)nameArray
            imageNameArray:(NSArray<NSString*> *)imageNameArray
+         shouldAutoScroll:(BOOL)shouldAutoScroll
            arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection
                 doneBlock:(FTPopOverMenuDoneBlock)doneBlock
 {
@@ -122,6 +136,7 @@
     _arrowDirection = arrowDirection;
     self.doneBlock = doneBlock;
     [_menuTableView reloadData];
+    _menuTableView.scrollEnabled = shouldAutoScroll;
     switch (_arrowDirection) {
         case FTPopOverMenuArrowDirectionUp:
             _menuTableView.frame = CGRectMake(0, FTDefaultMenuArrowHeight, self.frame.size.width, self.frame.size.height - FTDefaultMenuArrowHeight);
@@ -130,14 +145,6 @@
         case FTPopOverMenuArrowDirectionDown:
             _menuTableView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - FTDefaultMenuArrowHeight);
             break;
-    //TODO:
-        case FTPopOverMenuArrowDirectionLeft:
-            
-            break;
-        case FTPopOverMenuArrowDirectionRight:
-            
-            break;
-            
         default:
             break;
     }
@@ -221,10 +228,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSString *imageName = [NSString string];
+    if (_menuIconNameArray.count - 1 >= indexPath.row) {
+        imageName = [NSString stringWithFormat:@"%@",_menuIconNameArray[indexPath.row]];
+    }
     FTPopOverMenuCell *menuCell = [[FTPopOverMenuCell alloc]initWithStyle:UITableViewCellStyleDefault
                                                           reuseIdentifier:FTPopOverMenuTableViewCellIndentifier
                                                                  menuName:[NSString stringWithFormat:@"%@", _menuStringArray[indexPath.row]]
-                                                            iconImageName:_menuIconNameArray.count ? [NSString stringWithFormat:@"%@",_menuIconNameArray[indexPath.row]] : @""];
+                                                            iconImageName:imageName];
+
+    
     return menuCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -388,10 +401,6 @@
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock
 {
-    if (imageNameArray.count && menuArray.count != imageNameArray.count) {
-        [[[NSException alloc]initWithName:@"imageNameArray.count && menuArray.count != imageNameArray.count"
-                                   reason:@"If you do this, it's going to crash! Please check again." userInfo:nil] raise];
-    }
     
     [self initViews];
     self.sender = sender;
@@ -425,50 +434,56 @@
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
     CGRect menuRect = CGRectZero;
+    BOOL shouldAutoScroll = NO;
     FTPopOverMenuArrowDirection arrowDirection;
     
-    if (senderRect.origin.y + senderRect.size.height + menuHeight < KSCREEN_HEIGHT) {
+    if (senderRect.origin.y + senderRect.size.height/2  < KSCREEN_HEIGHT/2) {
         arrowDirection = FTPopOverMenuArrowDirectionUp;
         menuArrowPoint.y = 0;
-        
-        if (menuArrowPoint.x + FTDefaultMenuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-            menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), menuArrowPoint.x);
-            menuX = KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin;
-        }else if ( menuArrowPoint.x - FTDefaultMenuWidth/2 - FTDefaultMargin < 0){
-            menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + FTDefaultMenuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
-            menuX = FTDefaultMargin;
-        }else{
-            menuArrowPoint.x = FTDefaultMenuWidth/2;
-            menuX = senderRect.origin.x + (senderRect.size.width)/2 - FTDefaultMenuWidth/2;
-        }
-        menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), FTDefaultMenuWidth, menuHeight);
+
     }else{
         arrowDirection = FTPopOverMenuArrowDirectionDown;
         menuArrowPoint.y = menuHeight;
-        
-        //same with up
-        if (menuArrowPoint.x + FTDefaultMenuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-            menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), menuArrowPoint.x);
-            menuX = KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin;
-        }else if ( menuArrowPoint.x - FTDefaultMenuWidth/2 - FTDefaultMargin < 0){
-            menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + FTDefaultMenuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
-            menuX = FTDefaultMargin;
-        }else{
-            menuArrowPoint.x = FTDefaultMenuWidth/2;
-            menuX = senderRect.origin.x + (senderRect.size.width)/2 - FTDefaultMenuWidth/2;
+
+    }
+    
+    if (menuArrowPoint.x + FTDefaultMenuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
+        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), menuArrowPoint.x);
+        menuX = KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin;
+    }else if ( menuArrowPoint.x - FTDefaultMenuWidth/2 - FTDefaultMargin < 0){
+        menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + FTDefaultMenuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
+        menuX = FTDefaultMargin;
+    }else{
+        menuArrowPoint.x = FTDefaultMenuWidth/2;
+        menuX = senderRect.origin.x + (senderRect.size.width)/2 - FTDefaultMenuWidth/2;
+    }
+    
+    if (arrowDirection == FTPopOverMenuArrowDirectionUp) {
+        menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), FTDefaultMenuWidth, menuHeight);
+        // if too long and is out of screen
+        if (menuRect.origin.y + menuRect.size.height > KSCREEN_HEIGHT) {
+            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), FTDefaultMenuWidth, KSCREEN_HEIGHT - menuRect.origin.y - FTDefaultMargin);
+            shouldAutoScroll = YES;
         }
-        //same with up
+    }else{
         
         menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), FTDefaultMenuWidth, menuHeight);
+        // if too long and is out of screen
+        if (menuRect.origin.y  < 0) {
+            menuRect = CGRectMake(menuX, FTDefaultMargin, FTDefaultMenuWidth, senderRect.origin.y - FTDefaultMargin);
+            menuArrowPoint.y = senderRect.origin.y;
+            shouldAutoScroll = YES;
+        }
     }
+
 
     _popMenuView.frame = menuRect;
     _popMenuView.tintColor = self.tintColor;
     
-    
     [_popMenuView showWithAnglePoint:menuArrowPoint
                        withNameArray:self.menuArray
                       imageNameArray:self.menuImageArray
+                    shouldAutoScroll:shouldAutoScroll
                       arrowDirection:arrowDirection
                            doneBlock:^(NSInteger selectedIndex) {
                                [self doneActionWithSelectedIndex:selectedIndex];

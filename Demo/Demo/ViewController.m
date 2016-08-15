@@ -26,7 +26,7 @@
 //    [FTPopOverMenu setTintColor:[UIColor brownColor]];
 
     [FTPopOverMenu showForSender:sender
-                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
+                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr",@"MenuOne",@"MenuTwo",@"MenuThr",@"MenuOne",@"MenuTwo",@"MenuThr",@"MenuOne",@"MenuTwo",@"MenuThr",@"MenuOne",@"MenuTwo",@"MenuThr",@"MenuOne",@"MenuTwo",@"MenuThr"]
                   imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
                        doneBlock:^(NSInteger selectedIndex) {
                            

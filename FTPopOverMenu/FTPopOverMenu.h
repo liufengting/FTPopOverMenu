@@ -7,16 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  FTPopOverMenuArrowDirection
- */
-typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
-    FTPopOverMenuArrowDirectionUp,
-    FTPopOverMenuArrowDirectionDown,
-    FTPopOverMenuArrowDirectionLeft,
-    FTPopOverMenuArrowDirectionRight,
-    FTPopOverMenuArrowDirectionNone
-};
 
 /**
  *  FTPopOverMenuDoneBlock
@@ -34,33 +24,13 @@ typedef void (^FTPopOverMenuDismissBlock)();
  */
 @interface FTPopOverMenuCell : UITableViewCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName;
-
 @end
 /**
  *  FTPopOverMenuView
  */
 @interface FTPopOverMenuView : UIControl
 
-@property (nonatomic,strong)UIColor *tintColor;
-/**
- *  Show Method
- *
- *  @param anglePoint     anglePoint
- *  @param nameArray      nameArray
- *  @param imageNameArray imageNameArray
- *  @param arrowDirection arrowDirection
- *  @param doneBlock      FTPopOverMenuDoneBlock
- */
--(void)showWithAnglePoint:(CGPoint)anglePoint
-            withNameArray:(NSArray<NSString*> *)nameArray
-           imageNameArray:(NSArray<NSString*> *)imageNameArray
-           arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection
-                doneBlock:(FTPopOverMenuDoneBlock)doneBlock;
 @end
-
-
-
 
 /**---------------------------------------------------------------------
  *  -----------------------FTPopOverMenu-----------------------
