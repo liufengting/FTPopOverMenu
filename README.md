@@ -13,7 +13,7 @@
 
 `FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use. Supports both `portrait` and `landscape`. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`.
 
-## ScreenShots
+# ScreenShots
 
 <img src="/ScreenShots/Demo.gif" width="250"/>
 
