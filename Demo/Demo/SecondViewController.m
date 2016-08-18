@@ -2,7 +2,7 @@
 //  SecondViewController.m
 //  FTPopOverMenu
 //
-//  Created by liufengting on 16/4/12.
+//  Created by liufengting https://github.com/liufengting on 16/4/12.
 //  Copyright © 2016年 liufengting. All rights reserved.
 //
 
