@@ -448,7 +448,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     }
     
     if (menuArrowPoint.x + FTDefaultMenuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), menuArrowPoint.x);
+        
+        NSLog(@"%f || %f",menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin),FTDefaultMenuWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
+        
+        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), FTDefaultMenuWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
         menuX = KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin;
     }else if ( menuArrowPoint.x - FTDefaultMenuWidth/2 - FTDefaultMargin < 0){
         menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + FTDefaultMenuArrowWidth, menuArrowPoint.x - FTDefaultMargin);

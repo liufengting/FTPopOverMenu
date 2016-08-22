@@ -24,7 +24,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h9n-14-oc8">
-                                <rect key="frame" x="325" y="72" width="30" height="30"/>
+                                <rect key="frame" x="355" y="72" width="30" height="30"/>
                                 <state key="normal" title="THR"/>
                                 <connections>
                                     <action selector="showMenuFromButton:" destination="779-PW-fkb" eventType="touchUpInside" id="fvO-Ez-nVr"/>
@@ -62,7 +62,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="hy7-dq-QOS" firstAttribute="top" secondItem="Uhg-BK-0xA" secondAttribute="bottom" constant="8" id="0OL-9l-L3I"/>
-                            <constraint firstAttribute="trailing" secondItem="h9n-14-oc8" secondAttribute="trailing" constant="20" id="11D-vN-nDt"/>
+                            <constraint firstAttribute="trailing" secondItem="h9n-14-oc8" secondAttribute="trailing" constant="-10" id="11D-vN-nDt"/>
                             <constraint firstItem="h9n-14-oc8" firstAttribute="top" secondItem="Uhg-BK-0xA" secondAttribute="bottom" constant="8" id="7z7-HG-kQY"/>
                             <constraint firstItem="hy7-dq-QOS" firstAttribute="centerX" secondItem="Mdm-9K-5uz" secondAttribute="centerX" id="9fN-oI-u3W"/>
                             <constraint firstItem="s7d-Sl-vH8" firstAttribute="top" secondItem="jhN-8f-vso" secondAttribute="bottom" constant="13" id="OWe-S4-n2D"/>
