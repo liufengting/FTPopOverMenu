@@ -2,8 +2,8 @@
 //  FTPopOverMenu.m
 //  FTPopOverMenu
 //
-//  Created by liufengting https://github.com/liufengting on 16/4/5.
-//  Copyright © 2016年 liufengting. All rights reserved.
+//  Created by liufengting on 16/4/5.
+//  Copyright © 2016年 liufengting ( https://github.com/liufengting ). All rights reserved.
 //
 
 #import "FTPopOverMenu.h"
@@ -448,9 +448,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     }
     
     if (menuArrowPoint.x + FTDefaultMenuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-        
-        NSLog(@"%f || %f",menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin),FTDefaultMenuWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
-        
         menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), FTDefaultMenuWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
         menuX = KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin;
     }else if ( menuArrowPoint.x - FTDefaultMenuWidth/2 - FTDefaultMargin < 0){
