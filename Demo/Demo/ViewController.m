@@ -18,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [FTPopOverMenu setPreferedWidth:200];
 }
 
 - (IBAction)showMenuFromButton:(UIButton *)sender

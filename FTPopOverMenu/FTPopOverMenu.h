@@ -45,6 +45,13 @@ typedef void (^FTPopOverMenuDismissBlock)();
 +(void)setTintColor:(UIColor *)tintColor;
 
 /**
+ *  setPreferedWidth
+ *
+ *  @param preferedWidth preferedWidth
+ */
++(void)setPreferedWidth:(CGFloat )preferedWidth;
+
+/**
  *  show method with sender without images
  *
  *  @param sender       sender

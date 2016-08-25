@@ -14,6 +14,7 @@
 #define FTDefaultTintColor          [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:1.f]
 #define FTDefaultTextColor          [UIColor whiteColor]
 #define FTDefaultMenuFont           [UIFont systemFontOfSize:14]
+#define FTDefaultMenuWidth_MIN      6.0
 #define FTDefaultMenuWidth          120.0
 #define FTDefaultMenuIconWidth      20.0
 #define FTDefaultMenuRowHeight      40.0
@@ -62,14 +63,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         }
         CGFloat margin = (FTDefaultMenuRowHeight - FTDefaultMenuIconWidth)/2;
         CGRect iconImageRect = CGRectMake(margin, margin, FTDefaultMenuIconWidth, FTDefaultMenuIconWidth);
-        CGRect menuNameRect = CGRectMake(FTDefaultMenuRowHeight, margin, FTDefaultMenuWidth - FTDefaultMenuIconWidth - margin, FTDefaultMenuIconWidth);
+        CGRect menuNameRect = CGRectMake(FTDefaultMenuRowHeight, margin, self.bounds.size.width - FTDefaultMenuIconWidth - margin, FTDefaultMenuIconWidth);
         if (iconImage) {
             _iconImageView = [[UIImageView alloc]initWithFrame:iconImageRect];
             _iconImageView.backgroundColor = [UIColor clearColor];
             _iconImageView.image = iconImage;
             [self addSubview:_iconImageView];
         }else{
-            menuNameRect = CGRectMake(margin, margin, FTDefaultMenuWidth - margin*2, FTDefaultMenuIconWidth);
+            menuNameRect = CGRectMake(margin, margin, self.bounds.size.width - margin*2, FTDefaultMenuIconWidth);
         }
         _menuNameLabel = [[UILabel alloc]initWithFrame:menuNameRect];
         _menuNameLabel.backgroundColor = [UIColor clearColor];
@@ -261,6 +262,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 @property (nonatomic, strong) FTPopOverMenuDoneBlock doneBlock;
 @property (nonatomic, strong) FTPopOverMenuDismissBlock dismissBlock;
 @property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, assign) CGFloat preferedWidth;
 
 @property (nonatomic, strong) UIView *sender;
 @property (nonatomic, assign) CGRect senderFrame;
@@ -340,6 +342,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 {
     [self sharedInstance].tintColor = tintColor;
 }
++(void)setPreferedWidth:(CGFloat )preferedWidth
+{
+    [self sharedInstance].preferedWidth = preferedWidth;
+}
+
 
 #pragma mark - Private Methods
 
@@ -382,6 +389,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _tintColor = FTDefaultTintColor;
     }
     return _tintColor;
+}
+
+-(CGFloat )preferedWidth
+{
+    if (_preferedWidth < FTDefaultMenuWidth_MIN) {
+        _preferedWidth = FTDefaultMenuWidth;
+    }
+    return _preferedWidth;
 }
 
 -(void)onChangeStatusBarOrientationNotification:(NSNotification *)notification
@@ -447,30 +462,30 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
     }
     
-    if (menuArrowPoint.x + FTDefaultMenuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin), FTDefaultMenuWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
-        menuX = KSCREEN_WIDTH - FTDefaultMenuWidth - FTDefaultMargin;
-    }else if ( menuArrowPoint.x - FTDefaultMenuWidth/2 - FTDefaultMargin < 0){
+    if (menuArrowPoint.x + self.preferedWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
+        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - self.preferedWidth - FTDefaultMargin), self.preferedWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
+        menuX = KSCREEN_WIDTH - self.preferedWidth - FTDefaultMargin;
+    }else if ( menuArrowPoint.x - self.preferedWidth/2 - FTDefaultMargin < 0){
         menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + FTDefaultMenuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
         menuX = FTDefaultMargin;
     }else{
-        menuArrowPoint.x = FTDefaultMenuWidth/2;
-        menuX = senderRect.origin.x + (senderRect.size.width)/2 - FTDefaultMenuWidth/2;
+        menuArrowPoint.x = self.preferedWidth/2;
+        menuX = senderRect.origin.x + (senderRect.size.width)/2 - self.preferedWidth/2;
     }
     
     if (arrowDirection == FTPopOverMenuArrowDirectionUp) {
-        menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), FTDefaultMenuWidth, menuHeight);
+        menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.preferedWidth, menuHeight);
         // if too long and is out of screen
         if (menuRect.origin.y + menuRect.size.height > KSCREEN_HEIGHT) {
-            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), FTDefaultMenuWidth, KSCREEN_HEIGHT - menuRect.origin.y - FTDefaultMargin);
+            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.preferedWidth, KSCREEN_HEIGHT - menuRect.origin.y - FTDefaultMargin);
             shouldAutoScroll = YES;
         }
     }else{
         
-        menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), FTDefaultMenuWidth, menuHeight);
+        menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), self.preferedWidth, menuHeight);
         // if too long and is out of screen
         if (menuRect.origin.y  < 0) {
-            menuRect = CGRectMake(menuX, FTDefaultMargin, FTDefaultMenuWidth, senderRect.origin.y - FTDefaultMargin);
+            menuRect = CGRectMake(menuX, FTDefaultMargin, self.preferedWidth, senderRect.origin.y - FTDefaultMargin);
             menuArrowPoint.y = senderRect.origin.y;
             shouldAutoScroll = YES;
         }
