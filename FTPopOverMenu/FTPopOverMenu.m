@@ -14,7 +14,7 @@
 #define FTDefaultTintColor          [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:1.f]
 #define FTDefaultTextColor          [UIColor whiteColor]
 #define FTDefaultMenuFont           [UIFont systemFontOfSize:14]
-#define FTDefaultMenuWidth_MIN      6.0
+#define FTDefaultMenuWidth_MIN      50.0
 #define FTDefaultMenuWidth          120.0
 #define FTDefaultMenuIconWidth      20.0
 #define FTDefaultMenuRowHeight      40.0
@@ -51,7 +51,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
 @implementation FTPopOverMenuCell
 
--(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName
+-(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier menuName:(NSString *)menuName iconImageName:(NSString *)iconImageName textColor:(UIColor *)textColor
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -75,7 +75,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _menuNameLabel = [[UILabel alloc]initWithFrame:menuNameRect];
         _menuNameLabel.backgroundColor = [UIColor clearColor];
         _menuNameLabel.font = [UIFont systemFontOfSize:13];
-        _menuNameLabel.textColor = FTDefaultTextColor;
+        _menuNameLabel.textColor = textColor;
         _menuNameLabel.text = menuName;
         [self addSubview:_menuNameLabel];
     }
@@ -98,7 +98,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 @property (nonatomic, assign) FTPopOverMenuArrowDirection arrowDirection;
 @property (nonatomic, strong) FTPopOverMenuDoneBlock doneBlock;
 @property (nonatomic, strong) CAShapeLayer *backgroundLayer;
-@property (nonatomic,strong)UIColor *tintColor;
+@property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, strong) UIColor *textColor;
 
 @end
 
@@ -201,9 +202,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     _backgroundLayer.fillColor = _tintColor ? _tintColor.CGColor : FTDefaultTintColor.CGColor;
     _backgroundLayer.strokeColor = _tintColor ? _tintColor.CGColor : FTDefaultTintColor.CGColor;
     [self.layer insertSublayer:_backgroundLayer atIndex:0];
-    
-    
 }
+
 
 #pragma mark - UITableViewDelegate,UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -236,7 +236,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     FTPopOverMenuCell *menuCell = [[FTPopOverMenuCell alloc]initWithStyle:UITableViewCellStyleDefault
                                                           reuseIdentifier:FTPopOverMenuTableViewCellIndentifier
                                                                  menuName:[NSString stringWithFormat:@"%@", _menuStringArray[indexPath.row]]
-                                                            iconImageName:imageName];
+                                                            iconImageName:imageName
+                                                                textColor:self.textColor];
 
     
     return menuCell;
@@ -262,6 +263,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 @property (nonatomic, strong) FTPopOverMenuDoneBlock doneBlock;
 @property (nonatomic, strong) FTPopOverMenuDismissBlock dismissBlock;
 @property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, strong) UIColor *textColor;
 @property (nonatomic, assign) CGFloat preferedWidth;
 
 @property (nonatomic, strong) UIView *sender;
@@ -342,6 +344,12 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 {
     [self sharedInstance].tintColor = tintColor;
 }
+
++(void)setTextColor:(UIColor *)textColor
+{
+    [self sharedInstance].textColor = textColor;
+}
+
 +(void)setPreferedWidth:(CGFloat )preferedWidth
 {
     [self sharedInstance].preferedWidth = preferedWidth;
@@ -390,6 +398,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     }
     return _tintColor;
 }
+-(UIColor *)textColor
+{
+    if (!_textColor) {
+        _textColor = FTDefaultTextColor;
+    }
+    return _textColor;
+}
+
 
 -(CGFloat )preferedWidth
 {
@@ -494,7 +510,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
     _popMenuView.frame = menuRect;
     _popMenuView.tintColor = self.tintColor;
-    
+    _popMenuView.textColor = self.textColor;
+ 
     [_popMenuView showWithAnglePoint:menuArrowPoint
                        withNameArray:self.menuArray
                       imageNameArray:self.menuImageArray

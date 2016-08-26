@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
 
   s.name         = "FTPopOverMenu"
-  s.version      = "1.1.8"
-  s.summary      = "A pop over menu."
+  s.version      = "1.1.9"
+  s.summary      = "A pop over menu for iOS which is maybe the easiest one to use, supports both portrait and landscape. "
   s.description  = <<-DESC
-          A pop over menu which is maybe the easiest one to use. Supports both portrait and landscape.
+          `FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use, supports both portrait and landscape. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`. Simplest APIs, enable you to change the style in one line of code.
                    DESC
   s.author             = { "liufengting" => "wo157121900@me.com" }
   s.homepage     = "https://github.com/liufengting/FTPopOverMenu"

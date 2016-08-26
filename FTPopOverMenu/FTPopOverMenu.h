@@ -45,6 +45,13 @@ typedef void (^FTPopOverMenuDismissBlock)();
 +(void)setTintColor:(UIColor *)tintColor;
 
 /**
+ *  setTextColor
+ *
+ *  @param textColor textColor
+ */
++(void)setTextColor:(UIColor *)textColor;
+
+/**
  *  setPreferedWidth
  *
  *  @param preferedWidth preferedWidth

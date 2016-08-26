@@ -18,13 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    [FTPopOverMenu setPreferedWidth:200];
+    
+    // Do any of the following setting to set the style
+    
+    //    [FTPopOverMenu setTintColor:[UIColor brownColor]];
+    //    [FTPopOverMenu setTextColor:[UIColor redColor]];
+    //    [FTPopOverMenu setPreferedWidth:150];
 }
 
 - (IBAction)showMenuFromButton:(UIButton *)sender
 {
     
-//    [FTPopOverMenu setTintColor:[UIColor brownColor]];
+
+ 
 
     [FTPopOverMenu showForSender:sender
                         withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]

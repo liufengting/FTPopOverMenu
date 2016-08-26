@@ -11,7 +11,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/liufengting/FTPopOverMenu.svg)](https://github.com/liufengting/FTPopOverMenu/stargazers)
 [![Gitter](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-`FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use. Supports both `portrait` and `landscape`. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`.
+`FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use, supports both `portrait` and `landscape`. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`. Simplest APIs, enable you to change the style in one line of code.
 
 # ScreenShots
 
@@ -34,13 +34,24 @@ pod 'FTPopOverMenu'
 
 # Usage
 
-## setTintColor
+## setTintColor, default is gray color.
 
 ```objective-c
     [FTPopOverMenu setTintColor:[UIColor redColor]];
 ```
+## setTextColor, default is white color.
 
-## From SenderView, Menu Without Images
+```objective-c
+    [FTPopOverMenu setTextColor:[UIColor blackColor]];
+```
+
+## setPreferedWidth, default is 120, should not be less than 50.
+
+```objective-c
+    [FTPopOverMenu setPreferedWidth:200];
+```
+
+## From SenderView, Menu Without Images.
  
 ```objective-c
     [FTPopOverMenu showForSender:sender
@@ -52,7 +63,7 @@ pod 'FTPopOverMenu'
                        }];
 ```
 
-## From SenderView, Menu With Images
+## From SenderView, Menu With Images.
  
 ```objective-c
     [FTPopOverMenu showForSender:sender
@@ -64,7 +75,7 @@ pod 'FTPopOverMenu'
                           
                        }];
 ```
-## From SenderFrame/NavigationItem, Menu Without Images
+## From SenderFrame/NavigationItem, Menu Without Images.
  
 ```objective-c
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
@@ -76,7 +87,7 @@ pod 'FTPopOverMenu'
                              }];
 ```
 
-## From SenderFrame/NavigationItem, Menu With Images
+## From SenderFrame/NavigationItem, Menu With Images.
  
 ```objective-c
     [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
@@ -89,7 +100,7 @@ pod 'FTPopOverMenu'
                              }];
 ```
 
-## From barButtonItems 
+## From barButtonItems .
 
 - First: add action with event to you barButtonItems 
 
