@@ -8,6 +8,7 @@
 |1.1.6|2016-08-15|fix an issue of out of screen when too many menus|
 |1.1.7|2016-08-22|fix an issue thanks to Cui Lizong|
 |1.1.8|2016-08-25|add custom width support|
+|1.1.9|2016-08-26|add custom text color support|
 
 
 
