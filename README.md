@@ -125,7 +125,9 @@ pod 'FTPopOverMenu'
 }
 ```
 
+# CHANGELOG
 
+[CHANGELOG](https://github.com/liufengting/FTPopOverMenu/blob/master/CHANGELOG.md)
 
 # More
 
