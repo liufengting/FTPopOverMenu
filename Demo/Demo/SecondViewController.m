@@ -22,6 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+      self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -35,7 +36,7 @@
 -(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
 {
 
-    // provide two methods to deal with the barbuttonitems
+// provide two methods to deal with the barbuttonitems
 // comment this fowowing line and see how the other way of dealing with barbuttonitems
     
 //#define IfMethodOne
@@ -48,9 +49,9 @@
                               withMenu:@[@"123",@"234",@"345"]
                         imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
                              doneBlock:^(NSInteger selectedIndex) {
-                                 
+                                 NSLog(@"done");
                              } dismissBlock:^{
-                                 
+                                 NSLog(@"cancel");
                              }];
 
     

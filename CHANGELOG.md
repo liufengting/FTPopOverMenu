@@ -9,6 +9,7 @@
 |1.1.7|2016-08-22|fix an issue thanks to Cui Lizong|
 |1.1.8|2016-08-25|add custom width support|
 |1.1.9|2016-08-26|add custom text color support|
+|1.2.0|2016-09-07|fix some bugs|
 
 
 
