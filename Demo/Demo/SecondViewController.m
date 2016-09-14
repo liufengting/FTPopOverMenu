@@ -46,8 +46,8 @@
     CGRect rect = [self.navigationController.navigationBar convertRect:[event.allTouches.anyObject view].frame toView:[[UIApplication sharedApplication] keyWindow]];
     
     [FTPopOverMenu showFromSenderFrame:rect
-                              withMenu:@[@"123",@"234",@"345"]
-                        imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                              withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                        imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                              doneBlock:^(NSInteger selectedIndex) {
                                  NSLog(@"done");
                              } dismissBlock:^{
@@ -56,10 +56,10 @@
 
     
 #else
-    
+
     [FTPopOverMenu showFromEvent:event
-                        withMenu:@[@"123",@"234",@"345"]
-                  imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                  imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
                        } dismissBlock:^{
@@ -101,8 +101,10 @@
 
 -(void)onButtonOneTapped:(UIButton *)sender
 {
+    
     [FTPopOverMenu showForSender:sender
-                        withMenu:@[@"123",@"234",@"345"]
+                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                  imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
                        } dismissBlock:^{
