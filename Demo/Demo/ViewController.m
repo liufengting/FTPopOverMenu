@@ -31,7 +31,7 @@
     
     // uncomment the following line to use custom settings
     
-#define USE_CUSTOM_SETTINGS
+//#define USE_CUSTOM_SETTINGS
 
 #ifdef USE_CUSTOM_SETTINGS
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
