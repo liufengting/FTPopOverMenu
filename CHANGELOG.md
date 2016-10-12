@@ -11,6 +11,7 @@
 |1.1.9|2016-08-26|add custom text color support|
 |1.2.0|2016-09-07|fix some bugs|
 |1.2.1|2016-09-15|Big Change: more customizable|
+|1.2.2|2016-10-12|fix a bug of customize height|
 
 
 

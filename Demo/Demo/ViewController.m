@@ -31,11 +31,11 @@
     
     // uncomment the following line to use custom settings
     
-//#define USE_CUSTOM_SETTINGS
+#define USE_CUSTOM_SETTINGS
 
 #ifdef USE_CUSTOM_SETTINGS
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
-    configuration.menuRowHeight = 40;
+    configuration.menuRowHeight = 80;
     configuration.menuWidth = 120;
     configuration.textColor = [UIColor orangeColor];
     configuration.textFont = [UIFont boldSystemFontOfSize:14];
