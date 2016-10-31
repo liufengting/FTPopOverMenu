@@ -27,9 +27,10 @@
 {
     
     // Do any of the following setting to set the style (Only set what you want to change)
+    // Maybe do this when app starts (in AppDelegate) or anywhere you wanna change the style.
 
     
-    // uncomment the following line to use custom settings
+    // uncomment the following line to use custom settings.
     
 //#define USE_CUSTOM_SETTINGS
 
@@ -49,7 +50,7 @@
     
     
     [FTPopOverMenu showForSender:sender
-                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",]
                   imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
