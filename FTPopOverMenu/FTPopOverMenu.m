@@ -8,6 +8,14 @@
 
 #import "FTPopOverMenu.h"
 
+// changeable
+#define FTDefaultMargin             4.0
+#define FTDefaultMenuArrowHeight    10.0
+#define FTDefaultMenuArrowWidth     8.0
+#define FTDefaultMenuTextMargin     6.0
+#define FTDefaultMenuCornerRadius   4.0
+#define FTDefaultAnimationDuration  0.3
+// unchangeable, change them at your own risk
 #define KSCREEN_WIDTH               [[UIScreen mainScreen] bounds].size.width
 #define KSCREEN_HEIGHT              [[UIScreen mainScreen] bounds].size.height
 #define FTDefaultBackgroundColor    [UIColor clearColor]
@@ -17,15 +25,9 @@
 #define FTDefaultMenuWidth          120.0
 #define FTDefaultMenuIconSize       24.0
 #define FTDefaultMenuRowHeight      40.0
-#define FTDefaultMenuCornerRadius   4.0
-#define FTDefaultMargin             4.0
-#define FTDefaultMenuTextMargin     6.0
 #define FTDefaultMenuBorderWidth    0.8
-#define FTDefaultAnimationDuration  0.3
-#define FTDefaultMenuArrowHeight    10.0
-#define FTDefaultMenuArrowWidth     8.0
 
-#define FTPopOverMenuTableViewCellIndentifier @"FTPopOverMenuTableViewCellIndentifier"
+static NSString * const FTPopOverMenuTableViewCellIndentifier = @"FTPopOverMenuTableViewCellIndentifier";
 
 /**
  *  FTPopOverMenuArrowDirection
@@ -166,7 +168,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _menuTableView.backgroundColor = FTDefaultBackgroundColor;
         _menuTableView.separatorColor = [UIColor grayColor];
         _menuTableView.layer.cornerRadius = FTDefaultMenuCornerRadius;
-        _menuTableView.separatorInset = UIEdgeInsetsMake(0, FTDefaultMenuTextMargin, 0, FTDefaultMenuTextMargin);
         _menuTableView.scrollEnabled = NO;
         _menuTableView.clipsToBounds = YES;
         _menuTableView.delegate = self;
@@ -284,7 +285,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                                                           reuseIdentifier:FTPopOverMenuTableViewCellIndentifier
                                                                  menuName:[NSString stringWithFormat:@"%@", _menuStringArray[indexPath.row]]
                                                             iconImageName:imageName];
-    
+    if (indexPath.row == _menuStringArray.count-1) {
+        menuCell.separatorInset = UIEdgeInsetsMake(0, self.bounds.size.width, 0, 0);
+    }else{
+        menuCell.separatorInset = UIEdgeInsetsMake(0, FTDefaultMenuTextMargin, 0, FTDefaultMenuTextMargin);
+    }
     return menuCell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -475,7 +480,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     
     if (self.sender) {
         senderRect = [self.sender.superview convertRect:self.sender.frame toView:self.backgroundView];
-        // if run into touch problems on nav bar
+// if run into touch problems on nav bar, use the fowllowing line.
 //        senderRect.origin.y = MAX(64-senderRect.origin.y, senderRect.origin.y);
     }else{
         senderRect = self.senderFrame;
