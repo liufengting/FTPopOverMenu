@@ -10,8 +10,8 @@
 
 // changeable
 #define FTDefaultMargin             4.0
-#define FTDefaultMenuArrowHeight    10.0
 #define FTDefaultMenuArrowWidth     8.0
+#define FTDefaultMenuArrowHeight    10.0
 #define FTDefaultMenuTextMargin     6.0
 #define FTDefaultMenuCornerRadius   4.0
 #define FTDefaultAnimationDuration  0.3
@@ -449,7 +449,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 
-
 - (void) showForSender:(UIView *)sender
            senderFrame:(CGRect )senderFrame
               withMenu:(NSArray<NSString*> *)menuArray
@@ -499,7 +498,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     if (senderRect.origin.y + senderRect.size.height/2  < KSCREEN_HEIGHT/2) {
         arrowDirection = FTPopOverMenuArrowDirectionUp;
         menuArrowPoint.y = 0;
-
     }else{
         arrowDirection = FTPopOverMenuArrowDirectionDown;
         menuArrowPoint.y = menuHeight;
