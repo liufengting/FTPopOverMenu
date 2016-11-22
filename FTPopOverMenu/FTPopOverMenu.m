@@ -207,7 +207,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     if (_backgroundLayer) {
         [_backgroundLayer removeFromSuperlayer];
     }
-    
+
     UIBezierPath *path = [UIBezierPath bezierPath];
 
     switch (_arrowDirection) {

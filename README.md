@@ -16,11 +16,9 @@
 `FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use, supports both `portrait` and `landscape`. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`. Simplest APIs, enable you to change the style in one line of code.
 
 
-## SwiftVersion(not finished)
+## About Swift Version
 
-FTPopOverMenu_Swift is not finished yet. I'll try finishing it these days, you can [take a look at it now](https://github.com/liufengting/FTPopOverMenu_Swift). Nothing changes in the swift version, so maybe you wanna stick to this FTPopOverMenu Objective-C version.
-
-
+FTPopOverMenu_Swift is now finished. [Take a look at it now](https://github.com/liufengting/FTPopOverMenu_Swift). The swift version has same APIs with this OC version.
 
 # ScreenShots
 
