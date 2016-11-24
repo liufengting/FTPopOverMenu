@@ -14,7 +14,7 @@
 #define FTDefaultMenuArrowHeight    10.0
 #define FTDefaultMenuTextMargin     6.0
 #define FTDefaultMenuCornerRadius   4.0
-#define FTDefaultAnimationDuration  0.3
+#define FTDefaultAnimationDuration  0.2
 // unchangeable, change them at your own risk
 #define KSCREEN_WIDTH               [[UIScreen mainScreen] bounds].size.width
 #define KSCREEN_HEIGHT              [[UIScreen mainScreen] bounds].size.height
@@ -179,13 +179,15 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
 
 
--(void)showWithAnglePoint:(CGPoint)anglePoint
-            withNameArray:(NSArray<NSString*> *)nameArray
-           imageNameArray:(NSArray<NSString*> *)imageNameArray
-         shouldAutoScroll:(BOOL)shouldAutoScroll
-           arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection
-                doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+-(void)showWithFrame:(CGRect )frame
+          anglePoint:(CGPoint)anglePoint
+       withNameArray:(NSArray<NSString*> *)nameArray
+      imageNameArray:(NSArray<NSString*> *)imageNameArray
+    shouldAutoScroll:(BOOL)shouldAutoScroll
+      arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection
+           doneBlock:(FTPopOverMenuDoneBlock)doneBlock
 {
+    self.frame = frame;
     _menuStringArray = nameArray;
     _menuIconNameArray = imageNameArray;
     _arrowDirection = arrowDirection;
@@ -532,22 +534,54 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
             shouldAutoScroll = YES;
         }
     }
-
-
-    _popMenuView.frame = menuRect;
+    
+    CGPoint anchorPoint = CGPointMake(menuArrowPoint.x/menuRect.size.width, 0);
+    if (arrowDirection == FTPopOverMenuArrowDirectionDown) {
+        anchorPoint = CGPointMake(menuArrowPoint.x/menuRect.size.width, 1);
+    }
+    
+    
+    
+    _popMenuView.transform = CGAffineTransformMakeScale(1, 1);
  
-    [_popMenuView showWithAnglePoint:menuArrowPoint
-                       withNameArray:self.menuArray
-                      imageNameArray:self.menuImageArray
-                    shouldAutoScroll:shouldAutoScroll
-                      arrowDirection:arrowDirection
-                           doneBlock:^(NSInteger selectedIndex) {
-                               [self doneActionWithSelectedIndex:selectedIndex];
-                           }];
+    [_popMenuView showWithFrame:menuRect
+                     anglePoint:menuArrowPoint
+                  withNameArray:self.menuArray
+                 imageNameArray:self.menuImageArray
+               shouldAutoScroll:shouldAutoScroll
+                 arrowDirection:arrowDirection
+                      doneBlock:^(NSInteger selectedIndex) {
+                          [self doneActionWithSelectedIndex:selectedIndex];
+                      }];
+    
+    [self setAnchorPoint:anchorPoint forView:_popMenuView];
+    
+    _popMenuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
     
     [self show];
 }
 
+-(void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
+{
+    CGPoint newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x,
+                                   view.bounds.size.height * anchorPoint.y);
+    CGPoint oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x,
+                                   view.bounds.size.height * view.layer.anchorPoint.y);
+    
+    newPoint = CGPointApplyAffineTransform(newPoint, view.transform);
+    oldPoint = CGPointApplyAffineTransform(oldPoint, view.transform);
+    
+    CGPoint position = view.layer.position;
+    
+    position.x -= oldPoint.x;
+    position.x += newPoint.x;
+    
+    position.y -= oldPoint.y;
+    position.y += newPoint.y;
+    
+    view.layer.position = position;
+    view.layer.anchorPoint = anchorPoint;
+}
 
 #pragma mark - UIGestureRecognizerDelegate
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
@@ -577,6 +611,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     [UIView animateWithDuration:FTDefaultAnimationDuration
                      animations:^{
                          _popMenuView.alpha = 1;
+                         _popMenuView.transform = CGAffineTransformMakeScale(1, 1);
                      }];
 }
 
@@ -595,11 +630,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     [UIView animateWithDuration:FTDefaultAnimationDuration
                      animations:^{
                          _popMenuView.alpha = 0;
+                         _popMenuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
                      }completion:^(BOOL finished) {
                          if (finished) {
                              [self.popMenuView removeFromSuperview];
                              [self.backgroundView removeFromSuperview];
-                             
                              if (selectedIndex < 0) {
                                  if (self.dismissBlock) {
                                      self.dismissBlock();
