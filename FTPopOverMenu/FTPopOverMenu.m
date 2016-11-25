@@ -561,6 +561,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     [self show];
 }
 
+// the following solution is found at: http://stackoverflow.com/a/5666430/6310268
 -(void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
 {
     CGPoint newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x,
