@@ -24,6 +24,8 @@ typedef void (^FTPopOverMenuDismissBlock)();
  */
 @interface FTPopOverMenuConfiguration : NSObject
 
+@property (nonatomic, assign)CGFloat menuTextMargin;// Default is 6.
+@property (nonatomic, assign)CGFloat menuIconMargin;// Default is 6.
 @property (nonatomic, assign)CGFloat menuRowHeight;
 @property (nonatomic, assign)CGFloat menuWidth;
 @property (nonatomic, strong)UIColor *textColor;
