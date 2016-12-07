@@ -13,6 +13,7 @@
 #define FTDefaultMenuArrowWidth     8.0
 #define FTDefaultMenuArrowHeight    10.0
 #define FTDefaultMenuTextMargin     6.0
+#define FTDefaultMenuIconMargin     6.0
 #define FTDefaultMenuCornerRadius   4.0
 #define FTDefaultAnimationDuration  0.2
 // unchangeable, change them at your own risk
@@ -72,6 +73,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.borderWidth = FTDefaultMenuBorderWidth;
         self.textAlignment = NSTextAlignmentLeft;
         self.ignoreImageOriginalColor = NO;
+		self.menuTextMargin = FTDefaultMenuTextMargin;
+		self.menuIconMargin = FTDefaultMenuIconMargin;
    }
     return self;
 }
@@ -96,34 +99,38 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+		
+		FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
+		
         self.backgroundColor = [UIColor clearColor];
         
         UIImage *iconImage;
         if (iconImageName.length) {
             iconImage = [UIImage imageNamed:iconImageName];
         }
-        CGFloat margin = ([FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight - FTDefaultMenuIconSize)/2;
-        CGRect iconImageRect = CGRectMake(FTDefaultMenuTextMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
-        CGRect menuNameRect = CGRectMake(FTDefaultMenuTextMargin*2 + FTDefaultMenuIconSize, 0, [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - FTDefaultMenuIconSize - FTDefaultMenuTextMargin*3, [FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight);
+        CGFloat margin = (configuration.menuRowHeight - FTDefaultMenuIconSize)/2;
+        CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
+		CGFloat menuNameX = iconImageRect.origin.x + iconImageRect.size.width + configuration.menuTextMargin;
+        CGRect menuNameRect = CGRectMake(menuNameX, 0, configuration.menuWidth - menuNameX - configuration.menuTextMargin, configuration.menuRowHeight);
         if (iconImage) {
-            if ([FTPopOverMenuConfiguration defaultConfiguration].ignoreImageOriginalColor) {
+            if (configuration.ignoreImageOriginalColor) {
                 iconImage = [iconImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             }
         
             _iconImageView = [[UIImageView alloc]initWithFrame:iconImageRect];
             _iconImageView.backgroundColor = [UIColor clearColor];
             _iconImageView.contentMode = UIViewContentModeScaleAspectFit;
-            _iconImageView.tintColor = [FTPopOverMenuConfiguration defaultConfiguration].textColor;
+            _iconImageView.tintColor = configuration.textColor;
             _iconImageView.image = iconImage;
             [self.contentView addSubview:_iconImageView];
         }else{
-            menuNameRect = CGRectMake(FTDefaultMenuTextMargin, 0, [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - FTDefaultMenuTextMargin*2, [FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight);
+            menuNameRect = CGRectMake(configuration.menuTextMargin, 0, configuration.menuWidth - configuration.menuTextMargin*2, configuration.menuRowHeight);
         }
         _menuNameLabel = [[UILabel alloc]initWithFrame:menuNameRect];
         _menuNameLabel.backgroundColor = [UIColor clearColor];
-        _menuNameLabel.font = [FTPopOverMenuConfiguration defaultConfiguration].textFont;
-        _menuNameLabel.textColor = [FTPopOverMenuConfiguration defaultConfiguration].textColor;
-        _menuNameLabel.textAlignment = [FTPopOverMenuConfiguration defaultConfiguration].textAlignment;
+        _menuNameLabel.font = configuration.textFont;
+        _menuNameLabel.textColor = configuration.textColor;
+        _menuNameLabel.textAlignment = configuration.textAlignment;
         _menuNameLabel.text = menuName;
         [self.contentView addSubview:_menuNameLabel];
     }
@@ -290,7 +297,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     if (indexPath.row == _menuStringArray.count-1) {
         menuCell.separatorInset = UIEdgeInsetsMake(0, self.bounds.size.width, 0, 0);
     }else{
-        menuCell.separatorInset = UIEdgeInsetsMake(0, FTDefaultMenuTextMargin, 0, FTDefaultMenuTextMargin);
+        menuCell.separatorInset = UIEdgeInsetsMake(0, [FTPopOverMenuConfiguration defaultConfiguration].menuTextMargin, 0, [FTPopOverMenuConfiguration defaultConfiguration].menuTextMargin);
     }
     return menuCell;
 }
@@ -561,7 +568,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     [self show];
 }
 
-// the following solution is found at: http://stackoverflow.com/a/5666430/6310268
 -(void)setAnchorPoint:(CGPoint)anchorPoint forView:(UIView *)view
 {
     CGPoint newPoint = CGPointMake(view.bounds.size.width * anchorPoint.x,
