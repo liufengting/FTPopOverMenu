@@ -14,6 +14,6 @@
 |1.2.2|2016-10-12|fix a bug of customize height|
 |1.2.3|2016-11-17|remove last cell's separator, now looks more clean|
 |1.2.5|2016-11-24|add some more animations|
-
+|1.2.6|2016-12-07|Menu text and icon margins can be configured via FTPopOverMenuConfiguration.|
 
 
