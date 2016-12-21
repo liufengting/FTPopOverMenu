@@ -46,8 +46,8 @@
     CGRect rect = [self.navigationController.navigationBar convertRect:[event.allTouches.anyObject view].frame toView:[[UIApplication sharedApplication] keyWindow]];
     
     [FTPopOverMenu showFromSenderFrame:rect
-                              withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
-                        imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                              withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                        imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                              doneBlock:^(NSInteger selectedIndex) {
                                  NSLog(@"done");
                              } dismissBlock:^{
@@ -58,8 +58,8 @@
 #else
 
     [FTPopOverMenu showFromEvent:event
-                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
-                  imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                   withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                      imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
                        } dismissBlock:^{
@@ -103,8 +103,8 @@
 {
     
     [FTPopOverMenu showForSender:sender
-                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
-                  imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                   withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                      imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
                        } dismissBlock:^{

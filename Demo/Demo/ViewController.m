@@ -18,8 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
+    NSURL *url = [NSURL URLWithString:@"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40"];
     
+    NSLog(@"%@ %@",url,url.absoluteString);
 
 }
 
@@ -49,9 +50,15 @@
 #endif
     
     
+    
+    
+//    NSString *icomImage = @"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40";
+    
+    NSURL *icomImage = [NSURL URLWithString:@"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40"];
+
     [FTPopOverMenu showForSender:sender
-                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",]
-                  imageNameArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                   withMenuArray:@[@"MenuOne", @"MenuTwo", @"MenuThree", @"MenuFour",]
+                      imageArray:@[icomImage, @"Pokemon_Go_02", @"Pokemon_Go_03", @"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
                            NSLog(@"done block. do something. selectedIndex : %ld", (long)selectedIndex);
@@ -61,6 +68,8 @@
                            NSLog(@"user canceled. do nothing.");
                            
                        }];
+    
+    
     
 }
 
