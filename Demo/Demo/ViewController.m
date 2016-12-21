@@ -17,10 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    NSURL *url = [NSURL URLWithString:@"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40"];
     
-    NSLog(@"%@ %@",url,url.absoluteString);
 
 }
 
@@ -51,14 +48,15 @@
     
     
     
+    // supports image name, UIImage, image remote URL (NSURL), image remote URL string
     
-//    NSString *icomImage = @"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40";
+    NSString *icomImageURLString = @"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40";
     
-    NSURL *icomImage = [NSURL URLWithString:@"https://avatars1.githubusercontent.com/u/4414522?v=3&s=40"];
+    NSURL *icomImageURL = [NSURL URLWithString:icomImageURLString];
 
     [FTPopOverMenu showForSender:sender
                    withMenuArray:@[@"MenuOne", @"MenuTwo", @"MenuThree", @"MenuFour",]
-                      imageArray:@[icomImage, @"Pokemon_Go_02", @"Pokemon_Go_03", @"Pokemon_Go_04"]
+                      imageArray:@[icomImageURLString, icomImageURL, [UIImage imageNamed:@"Pokemon_Go_03"], @"Pokemon_Go_04"]
                        doneBlock:^(NSInteger selectedIndex) {
                            
                            NSLog(@"done block. do something. selectedIndex : %ld", (long)selectedIndex);

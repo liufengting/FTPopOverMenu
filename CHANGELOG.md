@@ -16,5 +16,6 @@
 |1.2.5|2016-11-24|add some more animations|
 |1.2.6|2016-12-07|Menu text and icon margins can be configured via FTPopOverMenuConfiguration.|
 |1.3.0|2016-12-21|Big jump. It supports more image resource, such as local UIImage, bundle image name, remote image url. I just changed almost all of the APIs, and still kept the old APIs working. |
+|1.3.1|2016-12-21|fix bug: image cache name encode |
 
 

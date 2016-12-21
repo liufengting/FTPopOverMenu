@@ -29,7 +29,7 @@
 #define FTDefaultMenuBorderWidth    0.8
 
 static NSString  *const FTPopOverMenuTableViewCellIndentifier = @"FTPopOverMenuTableViewCellIndentifier";
-static NSString  *const FTPopOverMenuImageCacheDirectory = @"com.FTImageCache";
+static NSString  *const FTPopOverMenuImageCacheDirectory = @"com.FTPopOverMenuImageCache";
 /**
  *  FTPopOverMenuArrowDirection
  */
@@ -171,7 +171,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     }else if ([resource isKindOfClass:[NSURL class]]) {
         [self downloadImageWithURL:resource doneBlock:doneBlock];
     }else{
-        NSLog(@"Image resource not recougnized");
+        NSLog(@"Image resource not recougnized.");
         doneBlock(nil);
     }
 }
@@ -191,7 +191,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         // download
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-            if(image){
+            if (image) {
                 NSData *data = UIImagePNGRepresentation(image);
                 [data writeToFile:[self filePathForImageURL:url] atomically:YES];
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -229,7 +229,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                                                    attributes:@{}
                                                         error:&error];
     }
-    return [diskCachePath stringByAppendingPathComponent:url.absoluteString];
+    NSData *data = [url.absoluteString dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *pathComponent = [data base64EncodedStringWithOptions:NSUTF8StringEncoding];
+    NSString *filePath = [diskCachePath stringByAppendingPathComponent:pathComponent];
+    return filePath;
 }
 
 @end
