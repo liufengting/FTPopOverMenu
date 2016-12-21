@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                    DESC
   s.author             = { "liufengting" => "wo157121900@me.com" }
   s.homepage     = "https://github.com/liufengting/FTPopOverMenu"
-  s.screenshots  = "https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/ScreenShots/Demo.gif"
+  s.screenshots  = "https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/screenshots.gif"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.platform     = :ios
   s.source       = { :git => "https://github.com/liufengting/FTPopOverMenu.git", :tag => "#{s.version}" }

@@ -26,7 +26,7 @@ FTPopOverMenu_Swift is now published. [Take a look at it now](https://github.com
 
 # Installation
 
-⚠️ Big jump from 1.2.6 to 1.3.0
+⚠️ Big jump from 1.2.6 to 1.3.0 (See [CHANGELOG](https://github.com/liufengting/FTPopOverMenu/blob/master/CHANGELOG.md) for more info)
 
 * supports more image resource, such as local UIImage, bundle image name, remote image url. 
 * also cache remote image into disk.
