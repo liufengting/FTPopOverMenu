@@ -24,7 +24,7 @@
 
 ![screenshots](https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/screenshots.gif)
 
-## recently add round arrow support
+## Recently UrbanHooker added round arrow support, I changed a little bit.
 
 ![screenshots](https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/FTPopOverMenuRoundArrow.png)
 
@@ -66,6 +66,7 @@ Do any of the following settings to set the style (Only set the ones you want to
     configuration.borderWidth = ...
     configuration.textAlignment = ...
     configuration.ignoreImageOriginalColor = ...;// set 'ignoreImageOriginalColor' to YES, images color will be same as textColor
+    configuration.allowRoundedArrow = ...// Default is 'NO', if sets to 'YES', the arrow will be drawn with round corner.
 ```
 
 

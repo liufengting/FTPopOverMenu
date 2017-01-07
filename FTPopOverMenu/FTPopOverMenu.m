@@ -9,24 +9,27 @@
 #import "FTPopOverMenu.h"
 
 // changeable
-#define FTDefaultMargin             4.0
-#define FTDefaultMenuArrowHeight    10.0
-#define FTDefaultMenuTextMargin     6.0
-#define FTDefaultMenuIconMargin     6.0
-#define FTDefaultMenuCornerRadius   4.0
-#define FTDefaultAnimationDuration  0.2
+#define FTDefaultMargin                     4.f
+#define FTDefaultMenuTextMargin             6.f
+#define FTDefaultMenuIconMargin             6.f
+#define FTDefaultMenuCornerRadius           5.f
+#define FTDefaultAnimationDuration          0.2
 // unchangeable, change them at your own risk
-#define KSCREEN_WIDTH               [[UIScreen mainScreen] bounds].size.width
-#define KSCREEN_HEIGHT              [[UIScreen mainScreen] bounds].size.height
-#define FTDefaultBackgroundColor    [UIColor clearColor]
-#define FTDefaultTintColor          [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:1.f]
-#define FTDefaultTextColor          [UIColor whiteColor]
-#define FTDefaultMenuFont           [UIFont systemFontOfSize:14]
-#define FTDefaultMenuWidth          120.0
-#define FTDefaultMenuIconSize       24.0
-#define FTDefaultMenuRowHeight      40.0
-#define FTDefaultMenuBorderWidth    0.8
-#define FTDefaultMenuArrowWidth     (sqrt(3)/3.f*(FTDefaultMenuArrowHeight))
+#define KSCREEN_WIDTH                       [[UIScreen mainScreen] bounds].size.width
+#define KSCREEN_HEIGHT                      [[UIScreen mainScreen] bounds].size.height
+#define FTDefaultBackgroundColor            [UIColor clearColor]
+#define FTDefaultTintColor                  [UIColor colorWithRed:80/255.f green:80/255.f blue:80/255.f alpha:1.f]
+#define FTDefaultTextColor                  [UIColor whiteColor]
+#define FTDefaultMenuFont                   [UIFont systemFontOfSize:14.f]
+#define FTDefaultMenuWidth                  120.f
+#define FTDefaultMenuIconSize               24.f
+#define FTDefaultMenuRowHeight              40.f
+#define FTDefaultMenuBorderWidth            0.8
+#define FTDefaultMenuArrowWidth             8.f
+#define FTDefaultMenuArrowHeight            10.f
+#define FTDefaultMenuArrowWidth_R           12.f
+#define FTDefaultMenuArrowHeight_R          12.f
+#define FTDefaultMenuArrowRoundRadius       4.f
 
 static NSString  *const FTPopOverMenuTableViewCellIndentifier = @"FTPopOverMenuTableViewCellIndentifier";
 static NSString  *const FTPopOverMenuImageCacheDirectory = @"com.FTPopOverMenuImageCache";
@@ -73,7 +76,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.borderWidth = FTDefaultMenuBorderWidth;
         self.textAlignment = NSTextAlignmentLeft;
         self.ignoreImageOriginalColor = NO;
-        self.allowRoundedArrow = YES;
+        self.allowRoundedArrow = NO;
         self.menuTextMargin = FTDefaultMenuTextMargin;
         self.menuIconMargin = FTDefaultMenuIconMargin;
         self.animationDuration = FTDefaultAnimationDuration;
@@ -103,37 +106,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
-        
-        CGFloat margin = (configuration.menuRowHeight - FTDefaultMenuIconSize)/2;
-        CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
-        CGFloat menuNameX = iconImageRect.origin.x + iconImageRect.size.width + configuration.menuTextMargin;
-        CGRect menuNameRect = CGRectMake(menuNameX, 0, configuration.menuWidth - menuNameX - configuration.menuTextMargin, configuration.menuRowHeight);
-        
-        if (!menuImage) {
-            menuNameRect = CGRectMake(configuration.menuTextMargin, 0, configuration.menuWidth - configuration.menuTextMargin*2, configuration.menuRowHeight);
-        }else{
-            self.iconImageView.frame = iconImageRect;
-            self.iconImageView.tintColor = configuration.textColor;
-            
-            [self getImageWithResource:menuImage
-                            completion:^(UIImage *image) {
-                                if (configuration.ignoreImageOriginalColor) {
-                                    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-                                }
-                                _iconImageView.image = image;
-                            }];
-            [self.contentView addSubview:self.iconImageView];
-        }
-        self.menuNameLabel.frame = menuNameRect;
-        self.menuNameLabel.font = configuration.textFont;
-        self.menuNameLabel.textColor = configuration.textColor;
-        self.menuNameLabel.textAlignment = configuration.textAlignment;
-        self.menuNameLabel.text = menuName;
-        [self.contentView addSubview:self.menuNameLabel];
+        [self setupWithMenuName:menuName menuImage:menuImage];
     }
     return self;
 }
+
 -(UIImageView *)iconImageView
 {
     if (!_iconImageView) {
@@ -151,6 +128,38 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _menuNameLabel.backgroundColor = [UIColor clearColor];
     }
     return _menuNameLabel;
+}
+
+-(void)setupWithMenuName:(NSString *)menuName menuImage:(id )menuImage
+{
+    FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
+    
+    CGFloat margin = (configuration.menuRowHeight - FTDefaultMenuIconSize)/2.f;
+    CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
+    CGFloat menuNameX = iconImageRect.origin.x + iconImageRect.size.width + configuration.menuTextMargin;
+    CGRect menuNameRect = CGRectMake(menuNameX, 0, configuration.menuWidth - menuNameX - configuration.menuTextMargin, configuration.menuRowHeight);
+    
+    if (!menuImage) {
+        menuNameRect = CGRectMake(configuration.menuTextMargin, 0, configuration.menuWidth - configuration.menuTextMargin*2, configuration.menuRowHeight);
+    }else{
+        self.iconImageView.frame = iconImageRect;
+        self.iconImageView.tintColor = configuration.textColor;
+        
+        [self getImageWithResource:menuImage
+                        completion:^(UIImage *image) {
+                            if (configuration.ignoreImageOriginalColor) {
+                                image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                            }
+                            _iconImageView.image = image;
+                        }];
+        [self.contentView addSubview:self.iconImageView];
+    }
+    self.menuNameLabel.frame = menuNameRect;
+    self.menuNameLabel.font = configuration.textFont;
+    self.menuNameLabel.textColor = configuration.textColor;
+    self.menuNameLabel.textAlignment = configuration.textAlignment;
+    self.menuNameLabel.text = menuName;
+    [self.contentView addSubview:self.menuNameLabel];
 }
 
 /**
@@ -283,7 +292,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     return _menuTableView;
 }
 
-
+-(CGFloat)menuArrowWidth
+{
+    return [FTPopOverMenuConfiguration defaultConfiguration].allowRoundedArrow ? FTDefaultMenuArrowWidth_R : FTDefaultMenuArrowWidth;
+}
+-(CGFloat)menuArrowHeight
+{
+    return [FTPopOverMenuConfiguration defaultConfiguration].allowRoundedArrow ? FTDefaultMenuArrowHeight_R : FTDefaultMenuArrowHeight;
+}
 
 -(void)showWithFrame:(CGRect )frame
           anglePoint:(CGPoint )anglePoint
@@ -301,9 +317,9 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     self.menuTableView.scrollEnabled = shouldAutoScroll;
     
     
-    CGRect menuRect = CGRectMake(0, FTDefaultMenuArrowHeight, self.frame.size.width, self.frame.size.height - FTDefaultMenuArrowHeight);
+    CGRect menuRect = CGRectMake(0, self.menuArrowHeight, self.frame.size.width, self.frame.size.height - self.menuArrowHeight);
     if (_arrowDirection == FTPopOverMenuArrowDirectionDown) {
-        menuRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - FTDefaultMenuArrowHeight);
+        menuRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height - self.menuArrowHeight);
     }
     [self.menuTableView setFrame:menuRect];
     [self.menuTableView reloadData];
@@ -318,59 +334,60 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     
     UIBezierPath *path = [UIBezierPath bezierPath];
     BOOL allowRoundedArrow = [FTPopOverMenuConfiguration defaultConfiguration].allowRoundedArrow;
+    CGFloat offset = 2.f*FTDefaultMenuArrowRoundRadius*sinf(M_PI_4/2.f);
+    CGFloat roundcenterHeight = offset + FTDefaultMenuArrowRoundRadius*sqrtf(2.f);
+    CGPoint roundcenterPoint = CGPointMake(anglePoint.x, roundcenterHeight);
     
     switch (_arrowDirection) {
         case FTPopOverMenuArrowDirectionUp:{
-            
+
             if (allowRoundedArrow) {
-                [path addArcWithCenter:CGPointMake(anglePoint.x + FTDefaultMenuArrowWidth*3/2.f, anglePoint.y+FTDefaultMenuArrowHeight-(sqrt(3)/2.f*FTDefaultMenuArrowWidth)) radius:FTDefaultMenuArrowHeight/2.f startAngle:M_PI_2 endAngle:M_PI*5/6.f clockwise:YES];
-                [path addLineToPoint:CGPointMake(anglePoint.x+sqrt(3)/12.f*FTDefaultMenuArrowHeight, anglePoint.y+FTDefaultMenuArrowHeight/4.f)];
-                [path addArcWithCenter:CGPointMake(anglePoint.x, anglePoint.y+FTDefaultMenuArrowHeight/3.f) radius:FTDefaultMenuArrowHeight/6.f startAngle:11/6.f*M_PI endAngle:M_PI_2*3 clockwise:NO];
-                [path addArcWithCenter:CGPointMake(anglePoint.x, anglePoint.y+FTDefaultMenuArrowHeight/3.f) radius:FTDefaultMenuArrowHeight/6.f startAngle:M_PI_2*3 endAngle:M_PI*7/6.f clockwise:NO];
-                [path addLineToPoint:CGPointMake(anglePoint.x-FTDefaultMenuArrowHeight*sqrt(3)/4.f, anglePoint.y+FTDefaultMenuArrowHeight*3/4.f)];
-                [path addArcWithCenter:CGPointMake(anglePoint.x - FTDefaultMenuArrowWidth*3/2.f, anglePoint.y+FTDefaultMenuArrowHeight-(sqrt(3)/2.f*FTDefaultMenuArrowWidth)) radius:FTDefaultMenuArrowHeight/2.f startAngle:M_PI/6.f endAngle:M_PI_2 clockwise:YES];
-            }
-            else {
-                [path moveToPoint:CGPointMake(anglePoint.x + FTDefaultMenuArrowWidth, FTDefaultMenuArrowHeight)];
+                [path addArcWithCenter:CGPointMake(anglePoint.x + self.menuArrowWidth, self.menuArrowHeight - 2.f*FTDefaultMenuArrowRoundRadius) radius:2.f*FTDefaultMenuArrowRoundRadius startAngle:M_PI_2 endAngle:M_PI_4*3.f clockwise:YES];
+                [path addLineToPoint:CGPointMake(anglePoint.x + FTDefaultMenuArrowRoundRadius/sqrtf(2.f), roundcenterPoint.y - FTDefaultMenuArrowRoundRadius/sqrtf(2.f))];
+                [path addArcWithCenter:roundcenterPoint radius:FTDefaultMenuArrowRoundRadius startAngle:M_PI_4*7.f endAngle:M_PI_4*5.f clockwise:NO];
+                [path addLineToPoint:CGPointMake(anglePoint.x - self.menuArrowWidth + (offset * (1.f+1.f/sqrtf(2.f))), self.menuArrowHeight - offset/sqrtf(2.f))];
+                [path addArcWithCenter:CGPointMake(anglePoint.x - self.menuArrowWidth, self.menuArrowHeight - 2.f*FTDefaultMenuArrowRoundRadius) radius:2.f*FTDefaultMenuArrowRoundRadius startAngle:M_PI_4 endAngle:M_PI_2 clockwise:YES];
+            } else {
+                [path moveToPoint:CGPointMake(anglePoint.x + self.menuArrowWidth, self.menuArrowHeight)];
                 [path addLineToPoint:anglePoint];
-                [path addLineToPoint:CGPointMake( anglePoint.x - FTDefaultMenuArrowWidth, FTDefaultMenuArrowHeight)];
+                [path addLineToPoint:CGPointMake( anglePoint.x - self.menuArrowWidth, self.menuArrowHeight)];
             }
             
-            [path addLineToPoint:CGPointMake( FTDefaultMenuCornerRadius, FTDefaultMenuArrowHeight)];
-            [path addArcWithCenter:CGPointMake(FTDefaultMenuCornerRadius, FTDefaultMenuArrowHeight + FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:-M_PI_2 endAngle:-M_PI clockwise:NO];
+            [path addLineToPoint:CGPointMake( FTDefaultMenuCornerRadius, self.menuArrowHeight)];
+            [path addArcWithCenter:CGPointMake(FTDefaultMenuCornerRadius, self.menuArrowHeight + FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:-M_PI_2 endAngle:-M_PI clockwise:NO];
             [path addLineToPoint:CGPointMake( 0, self.bounds.size.height - FTDefaultMenuCornerRadius)];
             [path addArcWithCenter:CGPointMake(FTDefaultMenuCornerRadius, self.bounds.size.height - FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:M_PI endAngle:M_PI_2 clockwise:NO];
             [path addLineToPoint:CGPointMake( self.bounds.size.width - FTDefaultMenuCornerRadius, self.bounds.size.height)];
             [path addArcWithCenter:CGPointMake(self.bounds.size.width - FTDefaultMenuCornerRadius, self.bounds.size.height - FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:M_PI_2 endAngle:0 clockwise:NO];
-            [path addLineToPoint:CGPointMake(self.bounds.size.width , FTDefaultMenuCornerRadius + FTDefaultMenuArrowHeight)];
-            [path addArcWithCenter:CGPointMake(self.bounds.size.width - FTDefaultMenuCornerRadius, FTDefaultMenuCornerRadius + FTDefaultMenuArrowHeight) radius:FTDefaultMenuCornerRadius startAngle:0 endAngle:-M_PI_2 clockwise:NO];
+            [path addLineToPoint:CGPointMake(self.bounds.size.width , FTDefaultMenuCornerRadius + self.menuArrowHeight)];
+            [path addArcWithCenter:CGPointMake(self.bounds.size.width - FTDefaultMenuCornerRadius, FTDefaultMenuCornerRadius + self.menuArrowHeight) radius:FTDefaultMenuCornerRadius startAngle:0 endAngle:-M_PI_2 clockwise:NO];
             [path closePath];
             
         }break;
         case FTPopOverMenuArrowDirectionDown:{
             
+            roundcenterPoint = CGPointMake(anglePoint.x, anglePoint.y - roundcenterHeight);
+
             if (allowRoundedArrow) {
-                [path addArcWithCenter:CGPointMake(anglePoint.x + FTDefaultMenuArrowWidth*3/2.f, anglePoint.y-FTDefaultMenuArrowHeight+(sqrt(3)/2.f*FTDefaultMenuArrowWidth)) radius:FTDefaultMenuArrowHeight/2.f startAngle:M_PI_2*3 endAngle:M_PI*7/6.f clockwise:NO];
-                [path addLineToPoint:CGPointMake(anglePoint.x+sqrt(3)/12.f*FTDefaultMenuArrowHeight, anglePoint.y-FTDefaultMenuArrowHeight/4.f)];
-                [path addArcWithCenter:CGPointMake(anglePoint.x, anglePoint.y-FTDefaultMenuArrowHeight/3.f) radius:FTDefaultMenuArrowHeight/6.f startAngle:1/6.f*M_PI endAngle:M_PI_2 clockwise:YES];
-                [path addArcWithCenter:CGPointMake(anglePoint.x, anglePoint.y-FTDefaultMenuArrowHeight/3.f) radius:FTDefaultMenuArrowHeight/6.f startAngle:M_PI_2 endAngle:M_PI*5/6.f clockwise:YES];
-                [path addLineToPoint:CGPointMake(anglePoint.x-FTDefaultMenuArrowHeight*sqrt(3)/4.f, anglePoint.y-FTDefaultMenuArrowHeight*3/4.f)];
-                [path addArcWithCenter:CGPointMake(anglePoint.x - FTDefaultMenuArrowWidth*3/2.f, anglePoint.y-FTDefaultMenuArrowHeight+(sqrt(3)/2.f*FTDefaultMenuArrowWidth)) radius:FTDefaultMenuArrowHeight/2.f startAngle:M_PI*11/6.f endAngle:M_PI_2*3 clockwise:NO];
-            }
-            else {
-                [path moveToPoint:CGPointMake(anglePoint.x + FTDefaultMenuArrowWidth, anglePoint.y - FTDefaultMenuArrowHeight)];
+                [path addArcWithCenter:CGPointMake(anglePoint.x + self.menuArrowWidth, anglePoint.y - self.menuArrowHeight + 2.f*FTDefaultMenuArrowRoundRadius) radius:2.f*FTDefaultMenuArrowRoundRadius startAngle:M_PI_2*3 endAngle:M_PI_4*5.f clockwise:NO];
+                [path addLineToPoint:CGPointMake(anglePoint.x + FTDefaultMenuArrowRoundRadius/sqrtf(2.f), roundcenterPoint.y + FTDefaultMenuArrowRoundRadius/sqrtf(2.f))];
+                [path addArcWithCenter:roundcenterPoint radius:FTDefaultMenuArrowRoundRadius startAngle:M_PI_4 endAngle:M_PI_4*3.f clockwise:YES];
+                [path addLineToPoint:CGPointMake(anglePoint.x - self.menuArrowWidth + (offset * (1.f+1.f/sqrtf(2.f))), anglePoint.y - self.menuArrowHeight + offset/sqrtf(2.f))];
+                [path addArcWithCenter:CGPointMake(anglePoint.x - self.menuArrowWidth, anglePoint.y - self.menuArrowHeight + 2.f*FTDefaultMenuArrowRoundRadius) radius:2.f*FTDefaultMenuArrowRoundRadius startAngle:M_PI_4*7 endAngle:M_PI_2*3 clockwise:NO];
+            } else {
+                [path moveToPoint:CGPointMake(anglePoint.x + self.menuArrowWidth, anglePoint.y - self.menuArrowHeight)];
                 [path addLineToPoint:anglePoint];
-                [path addLineToPoint:CGPointMake( anglePoint.x - FTDefaultMenuArrowWidth, anglePoint.y - FTDefaultMenuArrowHeight)];
+                [path addLineToPoint:CGPointMake( anglePoint.x - self.menuArrowWidth, anglePoint.y - self.menuArrowHeight)];
             }
             
-            [path addLineToPoint:CGPointMake( FTDefaultMenuCornerRadius, anglePoint.y - FTDefaultMenuArrowHeight)];
-            [path addArcWithCenter:CGPointMake(FTDefaultMenuCornerRadius, anglePoint.y - FTDefaultMenuArrowHeight - FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:M_PI_2 endAngle:M_PI clockwise:YES];
+            [path addLineToPoint:CGPointMake( FTDefaultMenuCornerRadius, anglePoint.y - self.menuArrowHeight)];
+            [path addArcWithCenter:CGPointMake(FTDefaultMenuCornerRadius, anglePoint.y - self.menuArrowHeight - FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:M_PI_2 endAngle:M_PI clockwise:YES];
             [path addLineToPoint:CGPointMake( 0, FTDefaultMenuCornerRadius)];
             [path addArcWithCenter:CGPointMake(FTDefaultMenuCornerRadius, FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:M_PI endAngle:-M_PI_2 clockwise:YES];
             [path addLineToPoint:CGPointMake( self.bounds.size.width - FTDefaultMenuCornerRadius, 0)];
             [path addArcWithCenter:CGPointMake(self.bounds.size.width - FTDefaultMenuCornerRadius, FTDefaultMenuCornerRadius) radius:FTDefaultMenuCornerRadius startAngle:-M_PI_2 endAngle:0 clockwise:YES];
-            [path addLineToPoint:CGPointMake(self.bounds.size.width , anglePoint.y - (FTDefaultMenuCornerRadius + FTDefaultMenuArrowHeight))];
-            [path addArcWithCenter:CGPointMake(self.bounds.size.width - FTDefaultMenuCornerRadius, anglePoint.y - (FTDefaultMenuCornerRadius + FTDefaultMenuArrowHeight)) radius:FTDefaultMenuCornerRadius startAngle:0 endAngle:M_PI_2 clockwise:YES];
+            [path addLineToPoint:CGPointMake(self.bounds.size.width , anglePoint.y - (FTDefaultMenuCornerRadius + self.menuArrowHeight))];
+            [path addArcWithCenter:CGPointMake(self.bounds.size.width - FTDefaultMenuCornerRadius, anglePoint.y - (FTDefaultMenuCornerRadius + self.menuArrowHeight)) radius:FTDefaultMenuCornerRadius startAngle:0 endAngle:M_PI_2 clockwise:YES];
             [path closePath];
             
         }break;
@@ -620,6 +637,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     return _popMenuView;
 }
 
+-(CGFloat)menuArrowWidth
+{
+    return [FTPopOverMenuConfiguration defaultConfiguration].allowRoundedArrow ? FTDefaultMenuArrowWidth_R : FTDefaultMenuArrowWidth;
+}
+-(CGFloat)menuArrowHeight
+{
+    return [FTPopOverMenuConfiguration defaultConfiguration].allowRoundedArrow ? FTDefaultMenuArrowHeight_R : FTDefaultMenuArrowHeight;
+}
 
 -(void)onChangeStatusBarOrientationNotification:(NSNotification *)notification
 {
@@ -670,7 +695,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         senderRect.origin.y = KSCREEN_HEIGHT;
     }
     
-    CGFloat menuHeight = [FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight * self.menuArray.count + FTDefaultMenuArrowHeight;
+    CGFloat menuHeight = [FTPopOverMenuConfiguration defaultConfiguration].menuRowHeight * self.menuArray.count + self.menuArrowHeight;
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
     CGRect menuRect = CGRectZero;
@@ -687,10 +712,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     }
     
     if (menuArrowPoint.x + [FTPopOverMenuConfiguration defaultConfiguration].menuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - FTDefaultMargin), [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - FTDefaultMenuArrowWidth - FTDefaultMargin);
+        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - FTDefaultMargin), [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - self.menuArrowWidth - FTDefaultMargin);
         menuX = KSCREEN_WIDTH - [FTPopOverMenuConfiguration defaultConfiguration].menuWidth - FTDefaultMargin;
     }else if ( menuArrowPoint.x - [FTPopOverMenuConfiguration defaultConfiguration].menuWidth/2 - FTDefaultMargin < 0){
-        menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + FTDefaultMenuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
+        menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + self.menuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
         menuX = FTDefaultMargin;
     }else{
         menuArrowPoint.x = [FTPopOverMenuConfiguration defaultConfiguration].menuWidth/2;

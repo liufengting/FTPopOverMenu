@@ -65,6 +65,9 @@
                            
                            NSLog(@"user canceled. do nothing.");
                            
+//                           FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
+//                           configuration.allowRoundedArrow = !configuration.allowRoundedArrow;
+                           
                        }];
     
     
