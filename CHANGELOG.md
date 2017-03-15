@@ -18,6 +18,7 @@
 |1.3.0|2016-12-21| Big jump. It supports more image resource, such as local UIImage, bundle image name, remote image url. I just changed almost all of the APIs, and still kept the old APIs working. |
 |1.3.1|2016-12-21| fix bug: image cache name encode |
 |1.3.2|2017-01-07| added round arrow support |
+|1.3.3|2017-03-05| remove some unused methods |
 
 
 
