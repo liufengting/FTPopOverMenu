@@ -102,10 +102,16 @@
 -(void)onButtonOneTapped:(UIButton *)sender
 {
     
+    NSArray *menuNameArray = @[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"];
+    NSArray *menuImageNameArray = @[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"];
+
+    
     [FTPopOverMenu showForSender:sender
-                   withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
-                      imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                   withMenuArray:menuNameArray
+                      imageArray:menuImageNameArray
                        doneBlock:^(NSInteger selectedIndex) {
+                           
+                           [sender setTitle:menuNameArray[selectedIndex] forState:UIControlStateNormal];
                            
                        } dismissBlock:^{
                            
