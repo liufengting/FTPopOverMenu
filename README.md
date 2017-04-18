@@ -2,6 +2,8 @@
 
 # FTPopOverMenu
 
+[![Join the chat at https://gitter.im/liufengting/FTPopOverMenu](https://badges.gitter.im/liufengting/FTPopOverMenu.svg)](https://gitter.im/liufengting/FTPopOverMenu?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Twitter](https://img.shields.io/badge/twitter-@liufengting-blue.svg?style=flat)](http://twitter.com/liufengting) 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/liufengting/FTPopOverMenu/master/LICENSE)
 [![Version](https://img.shields.io/cocoapods/v/FTPopOverMenu.svg?style=flat)](http://cocoapods.org/pods/FTPopOverMenu)
