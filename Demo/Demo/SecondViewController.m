@@ -13,6 +13,7 @@
 @interface SecondViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray<FTPopOverMenuModel *> *menuObjectArray;
 
 
 @end
@@ -30,6 +31,17 @@
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(onNavButtonTapped:event:)]];
     
 
+}
+
+- (NSArray<FTPopOverMenuModel *> *)menuObjectArray
+{
+    if (!_menuObjectArray) {
+        _menuObjectArray = @[[[FTPopOverMenuModel alloc] initWithTitle:@"MenuOne" image:@"Pokemon_Go_01" selected:NO],
+                             [[FTPopOverMenuModel alloc] initWithTitle:@"MenuTwo" image:@"Pokemon_Go_02" selected:NO],
+                             [[FTPopOverMenuModel alloc] initWithTitle:@"MenuThree" image:@"Pokemon_Go_03" selected:NO],
+                             [[FTPopOverMenuModel alloc] initWithTitle:@"MenuFour" image:@"Pokemon_Go_04" selected:NO]];
+    }
+    return _menuObjectArray;
 }
 
 
@@ -56,15 +68,30 @@
 
     
 #else
-
+    
+    
+    
+    
+    
     [FTPopOverMenu showFromEvent:event
-                   withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
-                      imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                   withMenuArray:self.menuObjectArray
                        doneBlock:^(NSInteger selectedIndex) {
+                           
                            
                        } dismissBlock:^{
                            
                        }];
+
+    
+
+//    [FTPopOverMenu showFromEvent:event
+//                   withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+//                      imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+//                       doneBlock:^(NSInteger selectedIndex) {
+//
+//                       } dismissBlock:^{
+//
+//                       }];
     
 #endif
     

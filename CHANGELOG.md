@@ -19,6 +19,7 @@
 |1.3.1|2016-12-21| fix bug: image cache name encode |
 |1.3.2|2017-01-07| added round arrow support |
 |1.3.3|2017-03-05| remove some unused methods |
+|1.3.4|2018-01-26| add selected text color and cell background color |
 
 
 
