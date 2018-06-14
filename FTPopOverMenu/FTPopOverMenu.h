@@ -52,6 +52,8 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 @property (nonatomic, strong) UIColor *selectedTextColor;
 @property (nonatomic, strong) UIColor *selectedCellBackgroundColor;
+@property (nonatomic, strong) UIColor *separatorColor;
+
 /**
  *  defaultConfiguration
  *
