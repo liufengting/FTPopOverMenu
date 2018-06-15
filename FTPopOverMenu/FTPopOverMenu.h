@@ -97,7 +97,7 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 
 /**
  show method with sender and image resouce Array
- 
+
  @param sender sender
  @param menuArray menuArray
  @param imageArray imageArray
