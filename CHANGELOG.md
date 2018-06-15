@@ -15,13 +15,13 @@
 |1.2.3|2016-11-17| remove last cell's separator, now looks more clean|
 |1.2.5|2016-11-24| add some more animations|
 |1.2.6|2016-12-07| Menu text and icon margins can be configured via FTPopOverMenuConfiguration.|
-|1.3.0|2016-12-21| Big jump. It supports more image resource, such as local UIImage, bundle image name, remote image url. I just changed almost all of the APIs, and still kept the old APIs working. |
+|1.3.0|2016-12-21| Big jump. More image resource support |
 |1.3.1|2016-12-21| fix bug: image cache name encode |
 |1.3.2|2017-01-07| added round arrow support |
 |1.3.3|2017-03-05| remove some unused methods |
 |1.3.4|2018-01-26| add selected text color and cell background color |
-|1.3.5|2018-06-15| Added separatorColor support|
-|1.3.6|2018-06-16| Added shadow support including shadowColor, shadowOpacity, shadowRadius, shadowOffsetX, shadowOffsetY|
+|1.3.5|2018-06-15| Added separatorColor support. Thanks to @flyandi|
+|1.3.6|2018-06-15| Added shadow support. Thanks to @flyandi|
 
 
 

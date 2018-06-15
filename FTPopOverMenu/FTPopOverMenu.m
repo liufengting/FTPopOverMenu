@@ -34,10 +34,10 @@
 #define FTDefaultMenuArrowHeight_R          12.f
 #define FTDefaultMenuArrowRoundRadius       4.f
 #define FTDefaultShadowColor                [UIColor blackColor]
-#define FTDefaultShadowRadius               5
-#define FTDefaultShadowOpacity              0
-#define FTDefaultShadowOffsetX              0
-#define FTDefaultShadowOffsetY              2
+#define FTDefaultShadowRadius               5.f
+#define FTDefaultShadowOpacity              0.f
+#define FTDefaultShadowOffsetX              0.f
+#define FTDefaultShadowOffsetY              2.f
 
 
 static NSString  *const FTPopOverMenuTableViewCellIndentifier = @"FTPopOverMenuTableViewCellIndentifier";
@@ -826,4 +826,5 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                          }
                      }];
 }
+
 @end
