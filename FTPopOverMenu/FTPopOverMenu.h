@@ -86,7 +86,6 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
  */
 @interface FTPopOverMenu : NSObject
 
-
 /**
  show method with sender without images
 
