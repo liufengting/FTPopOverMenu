@@ -53,6 +53,11 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 @property (nonatomic, strong) UIColor *selectedTextColor;
 @property (nonatomic, strong) UIColor *selectedCellBackgroundColor;
 @property (nonatomic, strong) UIColor *separatorColor;
+@property (nonatomic, strong) UIColor *shadowColor;
+@property (nonatomic, assign) CGFloat shadowOpacity;
+@property (nonatomic, assign) CGFloat shadowRadius;
+@property (nonatomic, assign) CGFloat shadowOffsetX;
+@property (nonatomic, assign) CGFloat shadowOffsetY;
 
 /**
  *  defaultConfiguration

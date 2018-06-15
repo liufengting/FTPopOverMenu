@@ -33,6 +33,12 @@
 #define FTDefaultMenuArrowWidth_R           12.f
 #define FTDefaultMenuArrowHeight_R          12.f
 #define FTDefaultMenuArrowRoundRadius       4.f
+#define FTDefaultShadowColor                [UIColor blackColor]
+#define FTDefaultShadowRadius               5
+#define FTDefaultShadowOpacity              0
+#define FTDefaultShadowOffsetX              0
+#define FTDefaultShadowOffsetY              2
+
 
 static NSString  *const FTPopOverMenuTableViewCellIndentifier = @"FTPopOverMenuTableViewCellIndentifier";
 static NSString  *const FTPopOverMenuImageCacheDirectory = @"com.FTPopOverMenuImageCache";
@@ -100,6 +106,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.selectedTextColor = FTDefaultSelectedTextColor;
         self.selectedCellBackgroundColor = FTDefaultCellBackgroundColor;
         self.separatorColor = FTDefaultSeparatorColor;
+        self.shadowColor = FTDefaultShadowColor;
+        self.shadowRadius = FTDefaultShadowRadius;
+        self.shadowOpacity = FTDefaultShadowOpacity;
+        self.shadowOffsetX = FTDefaultShadowOffsetX;
+        self.shadowOffsetY = FTDefaultShadowOffsetY;
     }
     return self;
 }
@@ -414,6 +425,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     _backgroundLayer.lineWidth = [FTPopOverMenuConfiguration defaultConfiguration].borderWidth;
     _backgroundLayer.fillColor = [FTPopOverMenuConfiguration defaultConfiguration].tintColor.CGColor;
     _backgroundLayer.strokeColor = [FTPopOverMenuConfiguration defaultConfiguration].borderColor.CGColor;
+    _backgroundLayer.shadowOpacity = [FTPopOverMenuConfiguration defaultConfiguration].shadowOpacity;
+    _backgroundLayer.shadowColor = [FTPopOverMenuConfiguration defaultConfiguration].shadowColor.CGColor;
+    _backgroundLayer.shadowRadius = [FTPopOverMenuConfiguration defaultConfiguration].shadowRadius;
+    _backgroundLayer.shadowOffset = CGSizeMake([FTPopOverMenuConfiguration defaultConfiguration].shadowOffsetX, [FTPopOverMenuConfiguration defaultConfiguration].shadowOffsetY);
     [self.layer insertSublayer:_backgroundLayer atIndex:0];
 }
 
