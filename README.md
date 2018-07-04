@@ -1,4 +1,4 @@
-![FTPopOverMenu](https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/FTPopOverMenu.jpg)
+![FTPopOverMenu](https://github.com/liufengting/FTResourceRepo/blob/master/Resource/FTPopOverMenu_logo/logotype_1280.png?raw=true)
 
 # FTPopOverMenu
 
@@ -173,6 +173,7 @@ Do any of the following settings to set the style (Only set the ones you want to
 
 # More
 
+* Logo Designed by @Tobaloidee
 * Images in the demo from [https://www.iconfinder.com/iconsets/pokemon-go](https://www.iconfinder.com/iconsets/pokemon-go).
 * If you like it, or maybe wanna use it in your own projects, please give me a `star`.
 * Looking for another way of doing this? Take a look at my another [FTPopMenu at here](https://github.com/liufengting/FTPopMenu).  It was another way of showing pop over menus, which is wrapped from `UIPopoverViewController`, and more genetic and more good-looking. Feel free to try it.
