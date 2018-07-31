@@ -16,6 +16,19 @@
 `FTPopOverMenu` is a pop over menu for `iOS` which is maybe the easiest one to use, supports both `portrait` and `landscape`. It can show from any `UIView`, any `UIBarButtonItem` and any `CGRect`. Simplest APIs, enable you to change the style in one line of code.
 
 
+### menu array supports following context:
+
+* image name (NSString, only main bundle),
+* image (UIImage),
+* image remote URL string (NSString),
+* image remote URL (NSURL),
+* model (FTPopOverMenuModel, select state support)
+
+### ⚠️ Big API Change from `1.3.6` to `2.0.0` (See [CHANGELOG](https://github.com/liufengting/FTPopOverMenu/blob/master/CHANGELOG.md) for more info)
+
+* supports separated configuration. 
+* change 'tintColor' to 'backgroundColor'
+
 # About Swift Version
 
 `FTPopOverMenu_Swift` is now published. [Take a look at it now](https://github.com/liufengting/FTPopOverMenu_Swift). The swift version has same APIs with this OC version.
@@ -29,12 +42,6 @@
 ![screenshots](https://raw.githubusercontent.com/liufengting/FTResourceRepo/master/Resource/FTPopOverMenu/FTPopOverMenuRoundArrow.png)
 
 # Installation
-
-⚠️ Big jump from 1.2.6 to 1.3.0 (See [CHANGELOG](https://github.com/liufengting/FTPopOverMenu/blob/master/CHANGELOG.md) for more info)
-
-* supports more image resource, such as local UIImage, bundle image name, remote image url. 
-* also cache remote image into disk.
-* just changed almost all of the APIs, and still kept the old APIs working.
 
 ## Manually
 
@@ -53,7 +60,7 @@ pod 'FTPopOverMenu'
 
 ## Customize
 
-Do any of the following settings to set the style (Only set the ones you want to change), maybe do this when app starts or when you want it to show a different style, but remember it's global change.
+Do any of the following settings to set the style (Only set the ones you want to change) before showing.
 
 ```objective-c
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
@@ -117,6 +124,21 @@ Do any of the following settings to set the style (Only set the ones you want to
                           
                        }];
 ```
+
+## From SenderView, Menu With Images, custom configuration.
+ 
+```objective-c
+    [FTPopOverMenu showForSender:sender
+                        withMenu:@[@"MenuOne",@"MenuTwo",@"MenuThr"]
+                  imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                   configuration:customConfiguration
+                       doneBlock:^(NSInteger selectedIndex) {
+                           
+                       } dismissBlock:^{
+                          
+                       }];
+```
+
 ## From SenderFrame/NavigationItem, Menu Without Images.
  
 ```objective-c
@@ -142,6 +164,20 @@ Do any of the following settings to set the style (Only set the ones you want to
                              }];
 ```
 
+## From SenderFrame/NavigationItem, Menu With Images, custom configuration.
+ 
+```objective-c
+    [FTPopOverMenu showFromSenderFrame:CGRectMake(self.view.frame.size.width - 40, 20, 40, 40)
+                              withMenu:@[@"123",@"234",@"345"]
+                        imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+	                     configuration:customConfiguration
+                             doneBlock:^(NSInteger selectedIndex) {
+                                 
+                             } dismissBlock:^{
+                                 
+                             }];
+```
+
 ## From barButtonItems .
 
 - First: add action with event to you barButtonItems 
@@ -150,7 +186,7 @@ Do any of the following settings to set the style (Only set the ones you want to
     [self.navigationItem setRightBarButtonItem:[[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleDone target:self action:@selector(onNavButtonTapped:event:)]];
 ```
 
-- Second: implement the action
+- Second: implement the action, also supports custom configuration.
 
 ```objective-c
 -(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
@@ -159,6 +195,7 @@ Do any of the following settings to set the style (Only set the ones you want to
     [FTPopOverMenu showFromEvent:event
                         withMenu:@[@"123",@"234",@"345"]
                   imageNameArray:@[@"setting_icon",@"setting_icon",@"setting_icon"]
+                  configuration:customConfiguration
                        doneBlock:^(NSInteger selectedIndex) {
                            
                        } dismissBlock:^{
@@ -179,7 +216,7 @@ Do any of the following settings to set the style (Only set the ones you want to
 * Looking for another way of doing this? Take a look at my another [FTPopMenu at here](https://github.com/liufengting/FTPopMenu).  It was another way of showing pop over menus, which is wrapped from `UIPopoverViewController`, and more genetic and more good-looking. Feel free to try it.
  
 
-<img src="https://raw.githubusercontent.com/liufengting/FTPopMenu/master/ScreenShots/ScreenShots2.png" width="400"/>
+<img src="https://raw.githubusercontent.com/liufengting/FTPopMenu/master/ScreenShots/ScreenShots2.png" width="300"/>
 
 
 # License

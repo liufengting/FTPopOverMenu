@@ -42,7 +42,7 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 @property (nonatomic, assign) CGFloat menuRowHeight;
 @property (nonatomic, assign) CGFloat menuWidth;
 @property (nonatomic, strong) UIColor *textColor;
-@property (nonatomic, strong) UIColor *tintColor;
+@property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, strong) UIColor *borderColor;
 @property (nonatomic, assign) CGFloat borderWidth;
 @property (nonatomic, strong) UIFont *textFont;
@@ -86,6 +86,13 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
  */
 @interface FTPopOverMenu : NSObject
 
+//    menuArray supports following context:
+//    1. image name (NSString, only main bundle),
+//    2. image (UIImage),
+//    3. image remote URL string (NSString),
+//    4. image remote URL (NSURL),
+//    5. model (FTPopOverMenuModel, select state support)
+
 /**
  show method with sender without images
 
@@ -111,6 +118,23 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 + (void) showForSender:(UIView *)sender
          withMenuArray:(NSArray *)menuArray
             imageArray:(NSArray *)imageArray
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
+
+/**
+ show method with sender, image resouce Array and configuration
+
+ @param sender sender
+ @param menuArray menuArray
+ @param imageArray imageArray
+ @param configuration configuration
+ @param doneBlock doneBlock
+ @param dismissBlock dismissBlock
+ */
++ (void) showForSender:(UIView *)sender
+         withMenuArray:(NSArray *)menuArray
+            imageArray:(NSArray *)imageArray
+         configuration:(FTPopOverMenuConfiguration *)configuration
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
@@ -142,6 +166,23 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
+
+/**
+ show method for barbuttonitems with event, imageArray and configuration
+
+ @param event event
+ @param menuArray menuArray
+ @param imageArray imageArray
+ @param configuration configuration
+ @param doneBlock doneBlock
+ @param dismissBlock dismissBlock
+ */
++ (void) showFromEvent:(UIEvent *)event
+         withMenuArray:(NSArray *)menuArray
+            imageArray:(NSArray *)imageArray
+         configuration:(FTPopOverMenuConfiguration *)configuration
+             doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+          dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 /**
  show method with SenderFrame without images
 
@@ -170,6 +211,22 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 
+/**
+ show method with SenderFrame, image resouce Array and configuration
+ 
+ @param senderFrame senderFrame
+ @param menuArray menuArray
+ @param imageArray imageArray
+ @param configuration configuration
+ @param doneBlock doneBlock
+ @param dismissBlock dismissBlock
+ */
++ (void) showFromSenderFrame:(CGRect )senderFrame
+               withMenuArray:(NSArray *)menuArray
+                  imageArray:(NSArray *)imageArray
+               configuration:(FTPopOverMenuConfiguration *)configuration
+                   doneBlock:(FTPopOverMenuDoneBlock)doneBlock
+                dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock;
 /**
  *  dismiss method
  */

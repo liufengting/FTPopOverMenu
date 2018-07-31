@@ -38,7 +38,7 @@
     if (!_menuObjectArray) {
         _menuObjectArray = @[[[FTPopOverMenuModel alloc] initWithTitle:@"MenuOne" image:@"Pokemon_Go_01" selected:NO],
                              [[FTPopOverMenuModel alloc] initWithTitle:@"MenuTwo" image:@"Pokemon_Go_02" selected:NO],
-                             [[FTPopOverMenuModel alloc] initWithTitle:@"MenuThree" image:@"Pokemon_Go_03" selected:NO],
+                             [[FTPopOverMenuModel alloc] initWithTitle:@"MenuThree" image:@"Pokemon_Go_03" selected:YES],
                              [[FTPopOverMenuModel alloc] initWithTitle:@"MenuFour" image:@"Pokemon_Go_04" selected:NO]];
     }
     return _menuObjectArray;
@@ -56,10 +56,10 @@
     
 #ifdef IfMethodOne
     CGRect rect = [self.navigationController.navigationBar convertRect:[event.allTouches.anyObject view].frame toView:[[UIApplication sharedApplication] keyWindow]];
-    
     [FTPopOverMenu showFromSenderFrame:rect
-                              withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
-                        imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                         withMenuArray:@[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"]
+                            imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                         configuration:[FTPopOverMenuConfiguration defaultConfiguration]
                              doneBlock:^(NSInteger selectedIndex) {
                                  NSLog(@"done");
                              } dismissBlock:^{
@@ -71,14 +71,16 @@
     
     
     
-    
+    FTPopOverMenuConfiguration *config = [FTPopOverMenuConfiguration defaultConfiguration];
+    config.backgroundColor = UIColor.redColor;
     
     [FTPopOverMenu showFromEvent:event
                    withMenuArray:self.menuObjectArray
+                      imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
+                   configuration:config
                        doneBlock:^(NSInteger selectedIndex) {
                            
-                           
-                       } dismissBlock:^{
+                       }dismissBlock:^{
                            
                        }];
 
@@ -132,10 +134,12 @@
     NSArray *menuNameArray = @[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"];
     NSArray *menuImageNameArray = @[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"];
 
-    
+    FTPopOverMenuConfiguration *config = [FTPopOverMenuConfiguration defaultConfiguration];
+    config.borderColor = UIColor.whiteColor;
     [FTPopOverMenu showForSender:sender
                    withMenuArray:menuNameArray
                       imageArray:menuImageNameArray
+                   configuration:config
                        doneBlock:^(NSInteger selectedIndex) {
                            
                            [sender setTitle:menuNameArray[selectedIndex] forState:UIControlStateNormal];
@@ -146,8 +150,5 @@
 
     
 }
-
-
-
 
 @end
