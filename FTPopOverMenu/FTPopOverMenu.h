@@ -11,7 +11,7 @@
 /**
  *  FTPopOverMenuDoneBlock
  *
- *  @param index SlectedIndex
+ *  @param selectedIndex SlectedIndex
  */
 typedef void (^FTPopOverMenuDoneBlock)(NSInteger selectedIndex);
 /**
