@@ -65,14 +65,13 @@
                              } dismissBlock:^{
                                  NSLog(@"cancel");
                              }];
-
-    
 #else
     
     
     
     FTPopOverMenuConfiguration *config = [FTPopOverMenuConfiguration defaultConfiguration];
     config.backgroundColor = UIColor.redColor;
+    config.coverBackgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
     
     [FTPopOverMenu showFromEvent:event
                    withMenuArray:self.menuObjectArray

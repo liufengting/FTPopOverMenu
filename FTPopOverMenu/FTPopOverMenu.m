@@ -109,6 +109,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.shadowOpacity = FTDefaultShadowOpacity;
         self.shadowOffsetX = FTDefaultShadowOffsetX;
         self.shadowOffsetY = FTDefaultShadowOffsetY;
+        self.coverBackgroundColor = FTDefaultBackgroundColor;
     }
     return self;
 }
@@ -696,7 +697,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 - (void)adjustPopOverMenu {
-
+    self.backgroundView.backgroundColor = self.config.coverBackgroundColor;
     [self.backgroundView setFrame:CGRectMake(0, 0, KSCREEN_WIDTH, KSCREEN_HEIGHT)];
 
     CGRect senderRect ;

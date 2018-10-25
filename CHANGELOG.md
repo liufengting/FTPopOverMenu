@@ -24,6 +24,6 @@
 |1.3.6|2018-06-15| Added shadow support. Thanks to @flyandi |
 |  | |  |
 |2.0.0|2018-07-31| supports separated configuration. |
-
+|2.0.1|2018-10-25| add cover background color. |
 
 

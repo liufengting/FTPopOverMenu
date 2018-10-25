@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A242FF22181BE9B00903066 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A242FF02181BE9B00903066 /* FTPopOverMenu.m */; };
 		5A2E156F1CC0ED79003BDE12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E156E1CC0ED79003BDE12 /* main.m */; };
 		5A2E15721CC0ED79003BDE12 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15711CC0ED79003BDE12 /* AppDelegate.m */; };
 		5A2E15781CC0ED79003BDE12 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A2E15761CC0ED79003BDE12 /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		5A2E15A21CC0EDB0003BDE12 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15A11CC0EDB0003BDE12 /* ViewController.m */; };
 		5A2E15A71CC0EDBC003BDE12 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15A41CC0EDBC003BDE12 /* SecondViewController.m */; };
 		5A2E15A81CC0EDBC003BDE12 /* SecondTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15A61CC0EDBC003BDE12 /* SecondTableViewCell.m */; };
-		5A2E15AC1CC11B28003BDE12 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E15AB1CC11B28003BDE12 /* FTPopOverMenu.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A242FF02181BE9B00903066 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
+		2A242FF12181BE9B00903066 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
 		5A2E156A1CC0ED79003BDE12 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A2E156E1CC0ED79003BDE12 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5A2E15701CC0ED79003BDE12 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -52,8 +54,6 @@
 		5A2E15A41CC0EDBC003BDE12 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		5A2E15A51CC0EDBC003BDE12 /* SecondTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondTableViewCell.h; sourceTree = "<group>"; };
 		5A2E15A61CC0EDBC003BDE12 /* SecondTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondTableViewCell.m; sourceTree = "<group>"; };
-		5A2E15AA1CC11B28003BDE12 /* FTPopOverMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTPopOverMenu.h; sourceTree = "<group>"; };
-		5A2E15AB1CC11B28003BDE12 /* FTPopOverMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTPopOverMenu.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,8 +132,8 @@
 		5A2E15A91CC11B28003BDE12 /* FTPopOverMenu */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E15AA1CC11B28003BDE12 /* FTPopOverMenu.h */,
-				5A2E15AB1CC11B28003BDE12 /* FTPopOverMenu.m */,
+				2A242FF12181BE9B00903066 /* FTPopOverMenu.h */,
+				2A242FF02181BE9B00903066 /* FTPopOverMenu.m */,
 			);
 			name = FTPopOverMenu;
 			path = ../../FTPopOverMenu;
@@ -279,7 +279,7 @@
 			files = (
 				5A2E15A71CC0EDBC003BDE12 /* SecondViewController.m in Sources */,
 				5A2E15A81CC0EDBC003BDE12 /* SecondTableViewCell.m in Sources */,
-				5A2E15AC1CC11B28003BDE12 /* FTPopOverMenu.m in Sources */,
+				2A242FF22181BE9B00903066 /* FTPopOverMenu.m in Sources */,
 				5A2E15A21CC0EDB0003BDE12 /* ViewController.m in Sources */,
 				5A2E15721CC0ED79003BDE12 /* AppDelegate.m in Sources */,
 				5A2E156F1CC0ED79003BDE12 /* main.m in Sources */,
