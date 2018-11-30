@@ -72,7 +72,8 @@
     FTPopOverMenuConfiguration *config = [FTPopOverMenuConfiguration defaultConfiguration];
     config.backgroundColor = UIColor.redColor;
     config.coverBackgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
-    
+    config.menuCornerRadius = 10.f;
+    config.separatorInset = UIEdgeInsetsMake(0, 15.f, 0, 15.f);
     [FTPopOverMenu showFromEvent:event
                    withMenuArray:self.menuObjectArray
                       imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]

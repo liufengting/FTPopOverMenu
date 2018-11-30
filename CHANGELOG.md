@@ -25,5 +25,6 @@
 |  | |  |
 |2.0.0|2018-07-31| supports separated configuration. |
 |2.0.1|2018-10-25| add cover background color. |
+|2.0.2|2018-11-30| add menuCornerRadius and separatorInset. |
 
 
