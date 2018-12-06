@@ -178,7 +178,9 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                             if (configuration.ignoreImageOriginalColor) {
                                 image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
                             }
-                            self.iconImageView.image = image;
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                self.iconImageView.image = image;
+                            });
                         }];
         [self.contentView addSubview:self.iconImageView];
     }
