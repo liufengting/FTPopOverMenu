@@ -180,7 +180,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                             }
                             dispatch_async(dispatch_get_main_queue(), ^{
                                 self.iconImageView.image = image;
-                            })
+                            });
                         }];
         [self.contentView addSubview:self.iconImageView];
     }
