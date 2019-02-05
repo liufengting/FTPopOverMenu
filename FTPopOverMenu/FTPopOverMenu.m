@@ -512,6 +512,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
 @interface FTPopOverMenu () <UIGestureRecognizerDelegate>
 
+@property (nonatomic, weak) UIWindow *callingWindow;
+
 @property (nonatomic, strong) UIView * backgroundView;
 @property (nonatomic, strong) FTPopOverMenuView *popMenuView;
 @property (nonatomic, strong) FTPopOverMenuDoneBlock doneBlock;
@@ -541,7 +543,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
          withMenuArray:(NSArray *)menuArray
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:menuArray imageNameArray:nil config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:sender window:nil senderFrame:CGRectNull withMenu:menuArray imageNameArray:nil config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showForSender:(UIView *)sender
@@ -549,7 +551,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
             imageArray:(NSArray *)imageArray
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:sender window:nil senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showForSender:(UIView *)sender
@@ -558,14 +560,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
          configuration:(FTPopOverMenuConfiguration *)configuration
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:sender senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:configuration doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:sender window:nil senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:configuration doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromEvent:(UIEvent *)event
          withMenuArray:(NSArray *)menuArray
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:menuArray imageNameArray:nil config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] window:event.allTouches.anyObject.window senderFrame:CGRectNull withMenu:menuArray imageNameArray:nil config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromEvent:(UIEvent *)event
@@ -573,7 +575,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
             imageArray:(NSArray *)imageArray
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] window:event.allTouches.anyObject.window senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromEvent:(UIEvent *)event
@@ -582,14 +584,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
          configuration:(FTPopOverMenuConfiguration *)configuration
              doneBlock:(FTPopOverMenuDoneBlock)doneBlock
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:configuration doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:[event.allTouches.anyObject view] window:event.allTouches.anyObject.window senderFrame:CGRectNull withMenu:menuArray imageNameArray:imageArray config:configuration doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromSenderFrame:(CGRect )senderFrame
                withMenuArray:(NSArray *)menuArray
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:nil senderFrame:senderFrame withMenu:menuArray imageNameArray:nil config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:nil window:nil senderFrame:senderFrame withMenu:menuArray imageNameArray:nil config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromSenderFrame:(CGRect )senderFrame
@@ -597,7 +599,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                   imageArray:(NSArray *)imageArray
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:nil senderFrame:senderFrame withMenu:menuArray imageNameArray:imageArray config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:nil window:nil senderFrame:senderFrame withMenu:menuArray imageNameArray:imageArray config:nil doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 + (void) showFromSenderFrame:(CGRect )senderFrame
@@ -606,7 +608,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                configuration:(FTPopOverMenuConfiguration *)configuration
                    doneBlock:(FTPopOverMenuDoneBlock)doneBlock
                 dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
-    [[self sharedInstance] showForSender:nil senderFrame:senderFrame withMenu:menuArray imageNameArray:imageArray config:configuration doneBlock:doneBlock dismissBlock:dismissBlock];
+    [[self sharedInstance] showForSender:nil window:nil senderFrame:senderFrame withMenu:menuArray imageNameArray:imageArray config:configuration doneBlock:doneBlock dismissBlock:dismissBlock];
 }
 
 +(void)dismiss {
@@ -634,6 +636,9 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 - (UIWindow *)backgroundWindow {
+    if (self.callingWindow != nil) {
+        return self.callingWindow;
+    }
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
     id<UIApplicationDelegate> delegate = [[UIApplication sharedApplication] delegate];
     if (window == nil && [delegate respondsToSelector:@selector(window)]){
@@ -678,6 +683,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 - (void) showForSender:(UIView *)sender
+                window:(UIWindow*)window
            senderFrame:(CGRect )senderFrame
               withMenu:(NSArray *)menuArray
         imageNameArray:(NSArray *)imageNameArray
@@ -686,16 +692,17 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
           dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
     dispatch_async(dispatch_get_main_queue(), ^{
         self.config = config ? config : [FTPopOverMenuConfiguration defaultConfiguration];
+        self.callingWindow = window;
         [self.backgroundView addSubview:self.popMenuView];
         [[self backgroundWindow] addSubview:self.backgroundView];
-
+        
         self.sender = sender;
         self.senderFrame = senderFrame;
         self.menuArray = menuArray;
         self.menuImageArray = imageNameArray;
         self.doneBlock = doneBlock;
         self.dismissBlock = dismissBlock;
-
+        
         [self adjustPopOverMenu];
     });
 }
