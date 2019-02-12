@@ -27,5 +27,6 @@
 |2.0.1|2018-10-25| add cover background color. |
 |2.0.2|2018-11-30| add menuCornerRadius and separatorInset. |
 |2.0.3|2018-12-06| @Deeer: 修复异步回调时图片无法显示的问题 |
+|2.0.4|2018-12-06| @Carles Estevadeordal: Added custom UIWindow support. |
 
 
