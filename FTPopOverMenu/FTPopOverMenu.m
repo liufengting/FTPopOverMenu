@@ -843,7 +843,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 
 - (void)show {
     self.isCurrentlyOnScreen = YES;
-    [UIView animateWithDuration:FTDefaultAnimationDuration
+    [UIView animateWithDuration:self.config.animationDuration
                      animations:^{
                          self.popMenuView.alpha = 1;
                          self.popMenuView.transform = CGAffineTransformMakeScale(1, 1);
@@ -860,7 +860,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 #pragma mark - doneActionWithSelectedIndex
 
 - (void)doneActionWithSelectedIndex:(NSInteger)selectedIndex {
-    [UIView animateWithDuration:FTDefaultAnimationDuration
+    [UIView animateWithDuration:self.config.animationDuration
                      animations:^{
                          self.popMenuView.alpha = 0;
                          self.popMenuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
