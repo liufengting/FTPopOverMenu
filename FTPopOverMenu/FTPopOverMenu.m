@@ -462,7 +462,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     id menuImage;
     BOOL selected = NO;
-    if (_menuImageArray.count - 1 >= indexPath.row) {
+    if (indexPath.row < _menuImageArray.count) {
         menuImage = _menuImageArray[indexPath.row];
     }
     NSString *title = [NSString string];
