@@ -33,8 +33,7 @@
 
 }
 
-- (NSArray<FTPopOverMenuModel *> *)menuObjectArray
-{
+- (NSArray<FTPopOverMenuModel *> *)menuObjectArray {
     if (!_menuObjectArray) {
         _menuObjectArray = @[[[FTPopOverMenuModel alloc] initWithTitle:@"MenuOne" image:@"Pokemon_Go_01" selected:NO],
                              [[FTPopOverMenuModel alloc] initWithTitle:@"MenuTwo" image:@"Pokemon_Go_02" selected:NO],
@@ -45,8 +44,7 @@
 }
 
 
--(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event
-{
+-(void)onNavButtonTapped:(UIBarButtonItem *)sender event:(UIEvent *)event {
 
 // provide two methods to deal with the barbuttonitems
 // comment this fowowing line and see how the other way of dealing with barbuttonitems
@@ -74,6 +72,7 @@
     config.coverBackgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
     config.menuCornerRadius = 10.f;
     config.separatorInset = UIEdgeInsetsMake(0, 15.f, 0, 15.f);
+//    config.imageSize = CGSizeMake(16.f, 16.f);
     [FTPopOverMenu showFromEvent:event
                    withMenuArray:self.menuObjectArray
                       imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]
@@ -104,17 +103,14 @@
 
 #pragma mark - UITableViewDataSource,UITableViewDelegate
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 100;
 }
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SecondTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SecondTableViewCellIdentifier" forIndexPath:indexPath];
     
     [cell.buttonOne addTarget:self action:@selector(onButtonOneTapped:) forControlEvents:UIControlEventTouchUpInside];
@@ -122,14 +118,12 @@
     
     return cell;
 }
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
--(void)onButtonOneTapped:(UIButton *)sender
-{
+-(void)onButtonOneTapped:(UIButton *)sender {
     
     NSArray *menuNameArray = @[@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour",@"MenuOne",@"MenuTwo",@"MenuThree",@"MenuFour"];
     NSArray *menuImageNameArray = @[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04",@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"];

@@ -17,12 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
 }
 
-- (IBAction)showMenuFromButton:(UIButton *)sender
-{
+- (IBAction)showMenuFromButton:(UIButton *)sender {
     
     // Do any of the following setting to set the style (Only set what you want to change)
 
@@ -68,7 +66,5 @@
     
     
 }
-
-
 
 @end

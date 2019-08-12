@@ -29,5 +29,6 @@
 |2.0.3|2018-12-06| @Deeer: 修复异步回调时图片无法显示的问题 |
 |2.0.4|2018-12-06| @Carles Estevadeordal: Added custom UIWindow support. |
 |2.0.5|2019-08-02| @yooomark: Fix bug: set animationDuration in config do not work |
+|2.0.6|2019-08-12| add customize icon size support |
 
 

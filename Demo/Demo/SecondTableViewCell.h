@@ -11,7 +11,6 @@
 @interface SecondTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIButton *buttonOne;
-
 @property (weak, nonatomic) IBOutlet UIButton *buttonTwo;
 
 @end

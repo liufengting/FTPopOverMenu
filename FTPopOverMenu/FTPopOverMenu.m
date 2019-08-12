@@ -112,6 +112,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.shadowOffsetX = FTDefaultShadowOffsetX;
         self.shadowOffsetY = FTDefaultShadowOffsetY;
         self.coverBackgroundColor = FTDefaultBackgroundColor;
+        self.imageSize = CGSizeMake(FTDefaultMenuIconSize, FTDefaultMenuIconSize);
     }
     return self;
 }
@@ -130,15 +131,14 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 @implementation FTPopOverMenuCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
-             reuseIdentifier:(NSString *)reuseIdentifier
-                    menuName:(NSString *)menuName
-                   menuImage:(id)menuImage
-                    selected:(BOOL)selected
+              reuseIdentifier:(NSString *)reuseIdentifier
+                     menuName:(NSString *)menuName
+                    menuImage:(id)menuImage
+                     selected:(BOOL)selected
                 configuration:(FTPopOverMenuConfiguration *)configuration {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-
         [self setupWithMenuName:menuName menuImage:menuImage selected:selected configuration:configuration];
     }
     return self;
@@ -162,8 +162,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 - (void)setupWithMenuName:(NSString *)menuName menuImage:(id)menuImage selected:(BOOL)selected configuration:(FTPopOverMenuConfiguration *)configuration {
-    CGFloat margin = (configuration.menuRowHeight - FTDefaultMenuIconSize)/2.f;
-    CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, FTDefaultMenuIconSize, FTDefaultMenuIconSize);
+    CGFloat imageWidth = configuration.imageSize.width;
+    CGFloat imageHeight = configuration.imageSize.height;
+    CGFloat margin = (configuration.menuRowHeight - imageHeight)/2.f;
+    CGRect iconImageRect = CGRectMake(configuration.menuIconMargin, margin, imageWidth, imageHeight);
     CGFloat menuNameX = iconImageRect.origin.x + iconImageRect.size.width + configuration.menuTextMargin;
     CGRect menuNameRect = CGRectMake(menuNameX, 0, configuration.menuWidth - menuNameX - configuration.menuTextMargin, configuration.menuRowHeight);
 
@@ -506,7 +508,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 @end
-
 
 #pragma mark - FTPopOverMenu
 
