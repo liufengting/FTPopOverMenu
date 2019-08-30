@@ -30,5 +30,6 @@
 |2.0.4|2018-12-06| @Carles Estevadeordal: Added custom UIWindow support. |
 |2.0.5|2019-08-02| @yooomark: Fix bug: set animationDuration in config do not work |
 |2.0.6|2019-08-12| add customize icon size support |
+|2.0.7|2019-08-30| correct selectedBackgroundColor, add cover color animation |
 
 

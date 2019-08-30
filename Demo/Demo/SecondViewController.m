@@ -72,6 +72,7 @@
     config.coverBackgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
     config.menuCornerRadius = 10.f;
     config.separatorInset = UIEdgeInsetsMake(0, 15.f, 0, 15.f);
+    config.selectedCellBackgroundColor = [UIColor yellowColor];
 //    config.imageSize = CGSizeMake(16.f, 16.f);
     [FTPopOverMenu showFromEvent:event
                    withMenuArray:self.menuObjectArray
