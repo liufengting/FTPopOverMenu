@@ -139,6 +139,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
+        self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.bounds];
         self.selectedBackgroundView.backgroundColor = configuration.selectedCellBackgroundColor;
         [self setupWithMenuName:menuName menuImage:menuImage selected:selected configuration:configuration];
     }

@@ -31,5 +31,6 @@
 |2.0.5|2019-08-02| @yooomark: Fix bug: set animationDuration in config do not work |
 |2.0.6|2019-08-12| add customize icon size support |
 |2.0.7|2019-08-30| correct selectedBackgroundColor, add cover color animation |
+|2.0.8|2019-09-02| fix selectedBackgroundColor thanks to @Jean1992 |
 
 
