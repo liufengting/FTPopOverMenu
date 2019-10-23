@@ -74,6 +74,7 @@
     config.separatorInset = UIEdgeInsetsMake(0, 15.f, 0, 15.f);
     config.selectedCellBackgroundColor = [UIColor yellowColor];
 //    config.imageSize = CGSizeMake(16.f, 16.f);
+    config.horizontalMargin = 10.f;
     [FTPopOverMenu showFromEvent:event
                    withMenuArray:self.menuObjectArray
                       imageArray:@[@"Pokemon_Go_01",@"Pokemon_Go_02",@"Pokemon_Go_03",@"Pokemon_Go_04"]

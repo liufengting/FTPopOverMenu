@@ -62,7 +62,7 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 @property (nonatomic, assign) CGFloat shadowOffsetY;
 @property (nonatomic, strong) UIColor *coverBackgroundColor;
 @property (nonatomic, assign) CGSize imageSize;
-
+@property (nonatomic, assign) CGFloat horizontalMargin;
 /**
  *  defaultConfiguration
  *

@@ -113,6 +113,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         self.shadowOffsetY = FTDefaultShadowOffsetY;
         self.coverBackgroundColor = FTDefaultBackgroundColor;
         self.imageSize = CGSizeMake(FTDefaultMenuIconSize, FTDefaultMenuIconSize);
+        self.horizontalMargin = FTDefaultMargin;
     }
     return self;
 }
@@ -742,12 +743,12 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         menuArrowPoint.y = menuHeight;
     }
 
-    if (menuArrowPoint.x + self.config.menuWidth/2 + FTDefaultMargin > KSCREEN_WIDTH) {
-        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - self.config.menuWidth - FTDefaultMargin), self.config.menuWidth - self.menuArrowWidth - FTDefaultMargin);
-        menuX = KSCREEN_WIDTH - self.config.menuWidth - FTDefaultMargin;
-    }else if ( menuArrowPoint.x - self.config.menuWidth/2 - FTDefaultMargin < 0){
-        menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + self.menuArrowWidth, menuArrowPoint.x - FTDefaultMargin);
-        menuX = FTDefaultMargin;
+    if (menuArrowPoint.x + self.config.menuWidth/2 + self.config.horizontalMargin > KSCREEN_WIDTH) {
+        menuArrowPoint.x = MIN(menuArrowPoint.x - (KSCREEN_WIDTH - self.config.menuWidth - self.config.horizontalMargin), self.config.menuWidth - self.menuArrowWidth - self.config.horizontalMargin);
+        menuX = KSCREEN_WIDTH - self.config.menuWidth - self.config.horizontalMargin;
+    }else if ( menuArrowPoint.x - self.config.menuWidth/2 - self.config.horizontalMargin < 0){
+        menuArrowPoint.x = MAX( FTDefaultMenuCornerRadius + self.menuArrowWidth, menuArrowPoint.x - self.config.horizontalMargin);
+        menuX = self.config.horizontalMargin;
     }else{
         menuArrowPoint.x = self.config.menuWidth/2;
         menuX = senderRect.origin.x + (senderRect.size.width)/2 - self.config.menuWidth/2;
@@ -757,7 +758,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.config.menuWidth, menuHeight);
         // if too long and is out of screen
         if (menuRect.origin.y + menuRect.size.height > KSCREEN_HEIGHT) {
-            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.config.menuWidth, KSCREEN_HEIGHT - menuRect.origin.y - FTDefaultMargin);
+            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.config.menuWidth, KSCREEN_HEIGHT - menuRect.origin.y - self.config.horizontalMargin);
             shouldAutoScroll = YES;
         }
     }else{
@@ -765,7 +766,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), self.config.menuWidth, menuHeight);
         // if too long and is out of screen
         if (menuRect.origin.y  < 0) {
-            menuRect = CGRectMake(menuX, FTDefaultMargin, self.config.menuWidth, senderRect.origin.y - FTDefaultMargin);
+            menuRect = CGRectMake(menuX, self.config.horizontalMargin, self.config.menuWidth, senderRect.origin.y - self.config.horizontalMargin);
             menuArrowPoint.y = senderRect.origin.y;
             shouldAutoScroll = YES;
         }
