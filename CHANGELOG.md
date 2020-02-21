@@ -33,5 +33,6 @@
 |2.0.7|2019-08-30| correct selectedBackgroundColor, add cover color animation |
 |2.0.8|2019-09-02| fix selectedBackgroundColor thanks to @Jean1992 |
 |2.0.9|2019-10-23| add horizontalMargin |
+|2.1.0|2020-02-21| add s.ios.deployment_target |
 
 
