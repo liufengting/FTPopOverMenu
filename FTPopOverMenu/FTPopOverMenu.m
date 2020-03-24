@@ -326,6 +326,9 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         _menuTableView.clipsToBounds = YES;
         _menuTableView.delegate = self;
         _menuTableView.dataSource = self;
+        if (@available(iOS 11.0, *)) {
+            _menuTableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+        }
         [self addSubview:_menuTableView];
     }
     return _menuTableView;
@@ -379,7 +382,6 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     CGFloat menuCornerRadius = self.config.menuCornerRadius;
     switch (_arrowDirection) {
         case FTPopOverMenuArrowDirectionUp:{
-            
             if (allowRoundedArrow) {
                 [path addArcWithCenter:CGPointMake(anglePoint.x + self.menuArrowWidth, self.menuArrowHeight - 2.f*FTDefaultMenuArrowRoundRadius) radius:2.f*FTDefaultMenuArrowRoundRadius startAngle:M_PI_2 endAngle:M_PI_4*3.f clockwise:YES];
                 [path addLineToPoint:CGPointMake(anglePoint.x + FTDefaultMenuArrowRoundRadius/sqrtf(2.f), roundcenterPoint.y - FTDefaultMenuArrowRoundRadius/sqrtf(2.f))];
@@ -404,9 +406,7 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
             
         }break;
         case FTPopOverMenuArrowDirectionDown:{
-            
             roundcenterPoint = CGPointMake(anglePoint.x, anglePoint.y - roundcenterHeight);
-            
             if (allowRoundedArrow) {
                 [path addArcWithCenter:CGPointMake(anglePoint.x + self.menuArrowWidth, anglePoint.y - self.menuArrowHeight + 2.f*FTDefaultMenuArrowRoundRadius) radius:2.f*FTDefaultMenuArrowRoundRadius startAngle:M_PI_2*3 endAngle:M_PI_4*5.f clockwise:NO];
                 [path addLineToPoint:CGPointMake(anglePoint.x + FTDefaultMenuArrowRoundRadius/sqrtf(2.f), roundcenterPoint.y + FTDefaultMenuArrowRoundRadius/sqrtf(2.f))];
@@ -726,7 +726,11 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     if (senderRect.origin.y > KSCREEN_HEIGHT) {
         senderRect.origin.y = KSCREEN_HEIGHT;
     }
-    
+
+    UIEdgeInsets safeAreaInset = UIEdgeInsetsZero;
+    if (@available(iOS 11.0, *)) {
+         safeAreaInset = [[UIApplication sharedApplication] keyWindow].safeAreaInsets;
+    }
     CGFloat menuHeight = self.config.menuRowHeight * self.menuArray.count + self.menuArrowHeight;
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
@@ -756,17 +760,17 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     if (arrowDirection == FTPopOverMenuArrowDirectionUp) {
         menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.config.menuWidth, menuHeight);
         // if too long and is out of screen
-        if (menuRect.origin.y + menuRect.size.height > KSCREEN_HEIGHT) {
-            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.config.menuWidth, KSCREEN_HEIGHT - menuRect.origin.y - self.config.horizontalMargin);
+        if (menuRect.origin.y + menuRect.size.height > KSCREEN_HEIGHT - safeAreaInset.bottom) {
+            menuRect = CGRectMake(menuX, (senderRect.origin.y + senderRect.size.height), self.config.menuWidth, KSCREEN_HEIGHT - menuRect.origin.y - self.config.horizontalMargin - safeAreaInset.bottom);
             shouldAutoScroll = YES;
         }
     }else{
-        
         menuRect = CGRectMake(menuX, (senderRect.origin.y - menuHeight), self.config.menuWidth, menuHeight);
         // if too long and is out of screen
-        if (menuRect.origin.y  < 0) {
-            menuRect = CGRectMake(menuX, self.config.horizontalMargin, self.config.menuWidth, senderRect.origin.y - self.config.horizontalMargin);
-            menuArrowPoint.y = senderRect.origin.y;
+        if (menuRect.origin.y < safeAreaInset.top) {
+            menuHeight -= safeAreaInset.top;
+            menuRect = CGRectMake(menuX, safeAreaInset.top + self.config.horizontalMargin, self.config.menuWidth, senderRect.origin.y - self.config.horizontalMargin - safeAreaInset.top);
+            menuArrowPoint.y = senderRect.origin.y - safeAreaInset.top;
             shouldAutoScroll = YES;
         }
     }
@@ -806,18 +810,13 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                                    view.bounds.size.height * anchorPoint.y);
     CGPoint oldPoint = CGPointMake(view.bounds.size.width * view.layer.anchorPoint.x,
                                    view.bounds.size.height * view.layer.anchorPoint.y);
-    
     newPoint = CGPointApplyAffineTransform(newPoint, view.transform);
     oldPoint = CGPointApplyAffineTransform(oldPoint, view.transform);
-    
     CGPoint position = view.layer.position;
-    
     position.x -= oldPoint.x;
     position.x += newPoint.x;
-    
     position.y -= oldPoint.y;
     position.y += newPoint.y;
-    
     view.layer.position = position;
     view.layer.anchorPoint = anchorPoint;
 }
@@ -886,4 +885,3 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
 }
 
 @end
-
