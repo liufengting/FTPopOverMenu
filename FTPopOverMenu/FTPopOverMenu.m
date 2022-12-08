@@ -180,12 +180,10 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
         
         [self getImageWithResource:menuImage
                         completion:^(UIImage *image) {
-                            if (configuration.ignoreImageOriginalColor) {
-                                image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-                            }
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                self.iconImageView.image = image;
-                            });
+            if (configuration.ignoreImageOriginalColor) {
+                image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            }
+            self.iconImageView.image = image;
                         }];
         [self.contentView addSubview:self.iconImageView];
     }
@@ -696,10 +694,8 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                     dismissBlock:(FTPopOverMenuDismissBlock)dismissBlock {
     self.config = config ? config : [FTPopOverMenuConfiguration defaultConfiguration];
     self.callingWindow = window;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.backgroundView addSubview:self.popMenuView];
-        [[self backgroundWindow] addSubview:self.backgroundView];
-    });
+    [self.backgroundView addSubview:self.popMenuView];
+    [[self backgroundWindow] addSubview:self.backgroundView];
     self.sender = sender;
     self.senderFrame = senderFrame;
     self.menuArray = menuArray;
@@ -868,17 +864,15 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                          self.popMenuView.alpha = 0;
                          self.popMenuView.transform = CGAffineTransformMakeScale(0.1, 0.1);
                      }completion:^(BOOL finished) {
-                         if (finished) {
-                             [self.popMenuView removeFromSuperview];
-                             [self.backgroundView removeFromSuperview];
-                             if (selectedIndex < 0) {
-                                 if (self.dismissBlock) {
-                                     self.dismissBlock();
-                                 }
-                             }else{
-                                 if (self.doneBlock) {
-                                     self.doneBlock(selectedIndex);
-                                 }
+                         [self.popMenuView removeFromSuperview];
+                         [self.backgroundView removeFromSuperview];
+                         if (selectedIndex < 0) {
+                             if (self.dismissBlock) {
+                                 self.dismissBlock();
+                             }
+                         }else{
+                             if (self.doneBlock) {
+                                 self.doneBlock(selectedIndex);
                              }
                          }
                      }];
