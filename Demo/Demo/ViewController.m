@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "FTPopOverMenu.h"
+#import "FTPopOverMenu/FTPopOverMenu.h"
 
 @interface ViewController ()
 

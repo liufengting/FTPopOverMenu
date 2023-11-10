@@ -1,12 +1,22 @@
 //
-//  FTPopOverMenu.h
+//  FTPopOverMenu.m
 //  FTPopOverMenu
 //
 //  Created by liufengting on 16/4/5.
 //  Copyright © 2016年 liufengting ( https://github.com/liufengting ). All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+//! Project version number for FTPopOverMenu.
+FOUNDATION_EXPORT double FTPopOverMenuVersionNumber;
+
+//! Project version string for FTPopOverMenu.
+FOUNDATION_EXPORT const unsigned char FTPopOverMenuVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <FTPopOverMenu/PublicHeader.h>
+
 
 /**
  *  FTPopOverMenuDoneBlock
@@ -248,4 +258,3 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 - (void)dismiss;
 
 @end
-

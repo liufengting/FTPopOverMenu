@@ -36,5 +36,6 @@
 |2.1.0|2020-02-21| add s.ios.deployment_target |
 |2.1.1|2020-03-24| Fix: height wrong when too long. Fix: SafeArea height issue. |
 |2.1.3|2022-12-08| Fix: dismiss animation interrupted occasionally |
+|2.1.4|2022-12-08| update using projectf for files |
 
 

@@ -8,7 +8,7 @@
 
 #import "SecondViewController.h"
 #import "SecondTableViewCell.h"
-#import "FTPopOverMenu.h"
+#import "FTPopOverMenu/FTPopOverMenu.h"
 
 @interface SecondViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -23,7 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-      self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
+    _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    self.navigationController.automaticallyAdjustsScrollViewInsets = YES;
     
     _tableView.delegate = self;
     _tableView.dataSource = self;

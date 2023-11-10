@@ -724,9 +724,9 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
     }
 
     UIEdgeInsets safeAreaInset = UIEdgeInsetsZero;
-    if (@available(iOS 11.0, *)) {
-         safeAreaInset = [[UIApplication sharedApplication] keyWindow].safeAreaInsets;
-    }
+
+    safeAreaInset = [self safeAreaInsets];
+
     CGFloat menuHeight = self.config.menuRowHeight * self.menuArray.count + self.menuArrowHeight;
     CGPoint menuArrowPoint = CGPointMake(senderRect.origin.x + (senderRect.size.width)/2, 0);
     CGFloat menuX = 0;
@@ -776,6 +776,30 @@ typedef NS_ENUM(NSUInteger, FTPopOverMenuArrowDirection) {
                    shouldAutoScroll:shouldAutoScroll
                      arrowDirection:arrowDirection];
     [self show];
+}
+
+- (UIEdgeInsets)safeAreaInsets {
+    UIEdgeInsets insets = UIEdgeInsetsZero;
+    if (@available(iOS 13.0, *)) {
+        for (UIWindowScene *scene in [UIApplication sharedApplication].connectedScenes) {
+            if (scene.activationState == UISceneActivationStateForegroundActive) {
+                for (UIWindow *window in scene.windows) {
+                    if (window.isKeyWindow) {
+                        insets = window.safeAreaInsets;
+                        break;
+                    }
+                }
+                if (!UIEdgeInsetsEqualToEdgeInsets(insets, UIEdgeInsetsZero)) {
+                    break;
+                }
+            }
+        }
+    } else {
+        // Fallback for iOS versions earlier than 13.0
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        insets = keyWindow.safeAreaInsets;
+    }
+    return insets;
 }
 
 - (void)prepareToShowWithMenuRect:(CGRect)menuRect menuArrowPoint:(CGPoint)menuArrowPoint shouldAutoScroll:(BOOL)shouldAutoScroll arrowDirection:(FTPopOverMenuArrowDirection)arrowDirection {
